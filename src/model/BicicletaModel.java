@@ -1,20 +1,38 @@
-package Model;
+package model;
 
-/**
- *
- * @author David
- */
 public class BicicletaModel {
-    private String FabricanteBici;
-    private String /*o int*/ PrecioUnitarioBici;
-    private int /*o String*/ Año;
+    private String fabricanteBici;
+    private int precioUnitarioBici;
+    private int ano;
     
     
-    public BicicletaModel(String FabricanteBici, String PrecioUnitarioBici, int Año){
-        this.FabricanteBici     = FabricanteBici;
-        this.PrecioUnitarioBici = PrecioUnitarioBici;
-        this.Año                = Año;
+    public BicicletaModel(String fabricanteBici, int precioUnitarioBici, int ano){
+        this.fabricanteBici     = fabricanteBici;
+        this.precioUnitarioBici = precioUnitarioBici;
+        this.ano                = ano;
     }
-    
-    /*Mirar cuales getters y setters crear y como crear el toString*/
+
+    public String getFabricanteBici() {
+        return fabricanteBici;
+    }
+
+    public void setFabricanteBici(String fabricanteBici) {
+        this.fabricanteBici = fabricanteBici;
+    }
+
+    public int getPrecioUnitarioBici() {
+        return precioUnitarioBici;
+    }
+
+    public void setPrecioUnitarioBici(int precioUnitarioBici) {
+        this.precioUnitarioBici = precioUnitarioBici;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 }

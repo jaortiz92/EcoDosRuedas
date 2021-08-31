@@ -1,24 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Model;
 
-/**
- *
- * @author David
- */
+package model;
+
 public class FabricanteModel {
-    private String ProvMotor;
-    private String ProvDireccion;
-    private String ProvTelefono;
+    private String provMotor;
+    private String provDireccion;
+    private String provTelefono;
     
-    public FabricanteModel(String ProvMotor, String ProvDireccion, String ProvTelefono){
-        this.ProvMotor      = ProvMotor;
-        this.ProvDireccion  = ProvDireccion;
-        this.ProvTelefono   = ProvTelefono;
+    public FabricanteModel(String provMotor, String provDireccion, String provTelefono){
+        this.provMotor      = provMotor;
+        this.provDireccion  = provDireccion;
+        this.provTelefono   = provTelefono;
     }
-    /*Mirar cuales getters y setters crear y como crear el toString*/
+
+    public String getProvMotor() {
+        return provMotor;
+    }
+
+    public void setProvMotor(String provMotor) {
+        this.provMotor = provMotor;
+    }
+
+    public String getProvDireccion() {
+        return provDireccion;
+    }
+
+    public void setProvDireccion(String provDireccion) {
+        this.provDireccion = provDireccion;
+    }
+
+    public String getProvTelefono() {
+        return provTelefono;
+    }
+
+    public void setProvTelefono(String provTelefono) {
+        this.provTelefono = provTelefono;
+    }
 }
 

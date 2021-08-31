@@ -1,25 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Model;
+package model;
 
-/**
- *
- * @author David
- */
 public class MotocicletaElectricaModel {
-    private String FabricanteMoto;
-    private String /*o int*/ PrecioUnitarioMoto;
-    private String Autonomia;
-    private String ProvMotorfk;
+    private String fabricanteMoto;
+    private int precioUnitarioMoto;
+    private int autonomia;
+    private String provMotorfk;
     
-    public MotocicletaElectricaModel(String FabricanteMoto, String PrecioUnitarioMoto, String Autonomia, String ProvMotorfk){
-        this.FabricanteMoto     = FabricanteMoto;
-        this.PrecioUnitarioMoto = PrecioUnitarioMoto;
-        this.Autonomia          = Autonomia;
-        this.ProvMotorfk        = ProvMotorfk;
+    public MotocicletaElectricaModel(String fabricanteMoto, int precioUnitarioMoto, int autonomia, String provMotorfk){
+        this.fabricanteMoto     = fabricanteMoto;
+        this.precioUnitarioMoto = precioUnitarioMoto;
+        this.autonomia          = autonomia;
+        this.provMotorfk        = provMotorfk;
     }
-    /*Mirar cuales getters y setters crear y como crear el toString*/
+
+    public String getFabricanteMoto() {
+        return fabricanteMoto;
+    }
+
+    public void setFabricanteMoto(String fabricanteMoto) {
+        this.fabricanteMoto = fabricanteMoto;
+    }
+
+    public int getPrecioUnitarioMoto() {
+        return precioUnitarioMoto;
+    }
+
+    public void setPrecioUnitarioMoto(int precioUnitarioMoto) {
+        this.precioUnitarioMoto = precioUnitarioMoto;
+    }
+
+    public int getAutonomia() {
+        return autonomia;
+    }
+
+    public void setAutonomia(int autonomia) {
+        this.autonomia = autonomia;
+    }
+
+    public String getProvMotorfk() {
+        return provMotorfk;
+    }
+
+    public void setProvMotorfk(String provMotorfk) {
+        this.provMotorfk = provMotorfk;
+    }
 }

@@ -1,29 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Model;
 
-/**
- *
- * @author David
- */
+package model;
+
 public class IntencionCompraModel {
-    private int    CodigoCompra;/* Revisar si se usa un autoincrement dependiendo de lo que se vaya a hacer*/
-    private String AliasComprafk;
-    private String FabBiciComprafk;
-    private String FabMotoComprafk;
-    private String FechaCompra;
+    private int    codigoCompra;/* Revisar si se usa un autoincrement dependiendo de lo que se vaya a hacer*/
+    private String aliasComprafk; //Fk?
+    private String fabBiciComprafk;
+    private String fabMotoComprafk;
+    private String fechaCompra; // Date
     
-    public IntencionCompraModel(int CodigoCompra, String AliasComprafk, String FabBiciComprafk, String FabMotoComprafk, String FechaCompra){
-        this.CodigoCompra    = CodigoCompra;
-        this.AliasComprafk   = AliasComprafk;
-        this.FabBiciComprafk = FabBiciComprafk;
-        this.FabMotoComprafk = FabMotoComprafk;
-        this.FechaCompra     = FechaCompra;
+    public IntencionCompraModel(int codigoCompra, String aliasComprafk, String fabBiciComprafk, String fabMotoComprafk, String fechaCompra){
+        this.codigoCompra    = codigoCompra;
+        this.aliasComprafk   = aliasComprafk;
+        this.fabBiciComprafk = fabBiciComprafk;
+        this.fabMotoComprafk = fabMotoComprafk;
+        this.fechaCompra     = fechaCompra;
     }
-    /*Mirar cuales getters y setters crear y como crear el toString*/
+
+    public int getCodigoCompra() {
+        return codigoCompra;
+    }
+
+    public void setCodigoCompra(int codigoCompra) {
+        this.codigoCompra = codigoCompra;
+    }
+
+    public String getAliasComprafk() {
+        return aliasComprafk;
+    }
+
+    public void setAliasComprafk(String aliasComprafk) {
+        this.aliasComprafk = aliasComprafk;
+    }
+
+    public String getFabBiciComprafk() {
+        return fabBiciComprafk;
+    }
+
+    public void setFabBiciComprafk(String fabBiciComprafk) {
+        this.fabBiciComprafk = fabBiciComprafk;
+    }
+
+    public String getFabMotoComprafk() {
+        return fabMotoComprafk;
+    }
+
+    public void setFabMotoComprafk(String fabMotoComprafk) {
+        this.fabMotoComprafk = fabMotoComprafk;
+    }
+
+    public String getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
 }
 
 

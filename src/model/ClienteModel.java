@@ -1,31 +1,77 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Model;
+package model;
 
-/**
- *
- * @author David 
- */
 public class ClienteModel {
-    private String Alias;
-    private String Nombre;
-    private String Apellido;
-    private String Email;
-    private int    Celular;
-    private String Contraseña;
-    private String FechaNacimiento;
+    private String alias;
+    private String nombre;
+    private String apellido;
+    private String email;
+    private String celular; // String?
+    private int contrasena;
+    private String fechaNacimiento;
     
-    public ClienteModel(String Alias, String Nombre, String Apellido, String Email, int Celular, String Contraseña, String FechaNacimiento){
-        this.Alias           = Alias;
-        this.Nombre          = Nombre;
-        this.Apellido        = Apellido;
-        this.Email           = Email;
-        this.Celular         = Celular;
-        this.Contraseña      = Contraseña;
-        this.FechaNacimiento = FechaNacimiento;
+    public ClienteModel(String alias, String nombre, String apellido, String email, String celular, int contrasena, String fechaNacimiento){
+        this.alias           = alias;
+        this.nombre          = nombre;
+        this.apellido        = apellido;
+        this.email           = email;
+        this.celular         = celular;
+        this.contrasena      = contrasena;
+        this.fechaNacimiento = fechaNacimiento;
     }
-    /*Mirar cuales getters y setters crear y como crear el toString*/
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public int getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(int contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
 }
