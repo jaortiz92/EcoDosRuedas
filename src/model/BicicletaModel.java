@@ -1,31 +1,14 @@
 package model;
 
-public class BicicletaModel {
+public class BicicletaModel extends Vehiculo{
     private String fabricanteBici;
     private int precioUnitarioBici;
     private int ano;
     
     
     public BicicletaModel(String fabricanteBici, int precioUnitarioBici, int ano){
-        this.fabricanteBici     = fabricanteBici;
-        this.precioUnitarioBici = precioUnitarioBici;
-        this.ano                = ano;
-    }
-
-    public String getFabricanteBici() {
-        return fabricanteBici;
-    }
-
-    public void setFabricanteBici(String fabricanteBici) {
-        this.fabricanteBici = fabricanteBici;
-    }
-
-    public int getPrecioUnitarioBici() {
-        return precioUnitarioBici;
-    }
-
-    public void setPrecioUnitarioBici(int precioUnitarioBici) {
-        this.precioUnitarioBici = precioUnitarioBici;
+        super(fabricanteBici, precioUnitarioBici);
+        this.ano = ano;
     }
 
     public int getAno() {

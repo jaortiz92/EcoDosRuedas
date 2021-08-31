@@ -1,32 +1,13 @@
 package model;
 
-public class MotocicletaElectricaModel {
-    private String fabricanteMoto;
-    private int precioUnitarioMoto;
+public class MotocicletaElectricaModel extends  Vehiculo{
     private int autonomia;
     private String provMotorfk;
     
     public MotocicletaElectricaModel(String fabricanteMoto, int precioUnitarioMoto, int autonomia, String provMotorfk){
-        this.fabricanteMoto     = fabricanteMoto;
-        this.precioUnitarioMoto = precioUnitarioMoto;
+        super(fabricanteMoto, precioUnitarioMoto);
         this.autonomia          = autonomia;
         this.provMotorfk        = provMotorfk;
-    }
-
-    public String getFabricanteMoto() {
-        return fabricanteMoto;
-    }
-
-    public void setFabricanteMoto(String fabricanteMoto) {
-        this.fabricanteMoto = fabricanteMoto;
-    }
-
-    public int getPrecioUnitarioMoto() {
-        return precioUnitarioMoto;
-    }
-
-    public void setPrecioUnitarioMoto(int precioUnitarioMoto) {
-        this.precioUnitarioMoto = precioUnitarioMoto;
     }
 
     public int getAutonomia() {
