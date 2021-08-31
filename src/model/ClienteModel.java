@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 public class ClienteModel {
     private String alias;
     private String nombre;
@@ -7,7 +9,7 @@ public class ClienteModel {
     private String email;
     private String celular; // String?
     private String contrasena;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     
     public ClienteModel(String alias, String nombre, String apellido, String email, String celular, String contrasena, String fechaNacimiento){
         this.alias           = alias;
@@ -16,7 +18,7 @@ public class ClienteModel {
         this.email           = email;
         this.celular         = celular;
         this.contrasena      = contrasena;
-        this.fechaNacimiento = fechaNacimiento;
+        setFechaNacimiento(fechaNacimiento);
     }
 
     public String getAlias() {
@@ -67,11 +69,16 @@ public class ClienteModel {
         this.contrasena = contrasena;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+        // yyyy/MM/dd
+        int year = Integer.valueOf(fechaNacimiento.substring(0, 4));
+        int month = Integer.valueOf(fechaNacimiento.substring(5, 7));
+        int day = Integer.valueOf(fechaNacimiento.substring(8, 10));
+        Date date = new Date( year - 1900 , month - 1, day);
+        this.fechaNacimiento = date;
     }
 }

@@ -4,7 +4,7 @@ USE RETO5;
 
 DROP TABLE IF EXISTS bicicletas;
 CREATE TABLE bicicletas (
-    fabricante 		VARCHAR(15) PRIMARY KEY,
+    fabricante VARCHAR(15) PRIMARY KEY,
     precio_unitario INT NOT NULL,
     ano INT NOT NULL
 );
@@ -24,14 +24,14 @@ CREATE TABLE clientes (
     contrasena CHAR(8) NULL,
     fecha_nacimiento DATE NULL
 );
-INSERT INTO clientes VALUES ('lucky', 'Pedro', 'Perez', 'lucky@gmail.com', '3178561234', 12345678, '1980-01-15');
-INSERT INTO clientes VALUES ('malopez', 'Maria', 'Lopez', 'malopez@hotmail.com', '3198246234', 11112222, '1990-02-12');
-INSERT INTO clientes VALUES ('diva', 'Ana', 'Diaz', 'diva@gmail.com', '3146464676', 87654321, '1986-04-20');
-INSERT INTO clientes VALUES ('dreamer', 'Luis', 'Rojas', 'dreamer@gmail.com', '3111112222', 46464646, '1990-05-28');
-INSERT INTO clientes VALUES ('ninja', 'Andres', 'Cruz', 'ninja@hotmail.com', '3123219876', 98653265, '1993-01-05');
-INSERT INTO clientes VALUES ('neon', 'Nelson', 'Ruiz', 'neon@hotmail.com', '3123219876', 98246234, '1994-10-20');
-INSERT INTO clientes VALUES ('rose', 'Claudia', 'Mendez', 'rose@gmail.com', '3123219876', 98215463, '1997-07-02');
-INSERT INTO clientes VALUES ('green', 'Jorge', 'Rodriguez', 'green@hotmail.com', '3198215463', 78561234, '1992-06-20');
+INSERT INTO clientes VALUES ('lucky', 'Pedro', 'Perez', 'lucky@gmail.com', '3178561234', '12345678', '1980-01-15');
+INSERT INTO clientes VALUES ('malopez', 'Maria', 'Lopez', 'malopez@hotmail.com', '3198246234', '11112222', '1990-02-12');
+INSERT INTO clientes VALUES ('diva', 'Ana', 'Diaz', 'diva@gmail.com', '3146464676', '87654321', '1986-04-20');
+INSERT INTO clientes VALUES ('dreamer', 'Luis', 'Rojas', 'dreamer@gmail.com', '3111112222', '46464646', '1990-05-28');
+INSERT INTO clientes VALUES ('ninja', 'Andres', 'Cruz', 'ninja@hotmail.com', '3123219876', '98653265', '1993-01-05');
+INSERT INTO clientes VALUES ('neon', 'Nelson', 'Ruiz', 'neon@hotmail.com', '3123219876', '98246234', '1994-10-20');
+INSERT INTO clientes VALUES ('rose', 'Claudia', 'Mendez', 'rose@gmail.com', '3123219876', '98215463', '1997-07-02');
+INSERT INTO clientes VALUES ('green', 'Jorge', 'Rodriguez', 'green@hotmail.com', '3198215463', '78561234', '1992-06-20');
 
 DROP TABLE IF EXISTS fabricanes;
 CREATE TABLE fabricantes (
@@ -53,12 +53,12 @@ CREATE TABLE motocicletas_electricas (
     proveedor_del_motor_fk VARCHAR(20) NOT NULL,
     FOREIGN KEY(proveedor_del_motor_fk) REFERENCES fabricantes(proveedor_del_motor)
 );
-INSERT INTO motocicletas_electricas VALUES ("Starker", 4200000, "18 horas", "Auteco");
-INSERT INTO motocicletas_electricas VALUES ("Lucky Lion", 5600000, "14 horas", "Hitachi");
-INSERT INTO motocicletas_electricas VALUES ("Be Electric", 4600000, "26 horas", "Auteco");
-INSERT INTO motocicletas_electricas VALUES ("Aima", 8000000, "36 horas", "Bosch");
-INSERT INTO motocicletas_electricas VALUES ("Mec de Colombia", 5900000, "20 horas", "Teco");
-INSERT INTO motocicletas_electricas VALUES ("Atom Electric", 4500000, "12 horas", "General Electric");
+INSERT INTO motocicletas_electricas VALUES ("Starker", 4200000, 18, "Auteco");
+INSERT INTO motocicletas_electricas VALUES ("Lucky Lion", 5600000, 14, "Hitachi");
+INSERT INTO motocicletas_electricas VALUES ("Be Electric", 4600000, 26, "Auteco");
+INSERT INTO motocicletas_electricas VALUES ("Aima", 8000000, 36, "Bosch");
+INSERT INTO motocicletas_electricas VALUES ("Mec de Colombia", 5900000, 20, "Teco");
+INSERT INTO motocicletas_electricas VALUES ("Atom Electric", 4500000, 12, "General Electric");
 
 DROP TABLE IF EXISTS intencion_de_compra;
 CREATE TABLE intencion_de_compra(

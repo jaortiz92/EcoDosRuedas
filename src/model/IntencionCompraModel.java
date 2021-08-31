@@ -1,20 +1,44 @@
 
 package model;
 
+import java.sql.Date;
+//import java.util.Date;
+
 public class IntencionCompraModel {
-    private int    codigoCompra;/* Revisar si se usa un autoincrement dependiendo de lo que se vaya a hacer*/
-    private String aliasComprafk; //Fk?
-    private String fabBiciComprafk;
-    private String fabMotoComprafk;
-    private String fechaCompra; // Date
+    private int codigoCompra;/* Revisar si se usa un autoincrement dependiendo de lo que se vaya a hacer*/
+    private ClienteModel aliasComprafk;
+    private Vehiculo fabComprafk;
+    private Date fechaCompra; // Date
     
-    public IntencionCompraModel(int codigoCompra, String aliasComprafk, String fabBiciComprafk, String fabMotoComprafk, String fechaCompra){
+    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk, String fechaCompra){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
-        this.fabBiciComprafk = fabBiciComprafk;
-        this.fabMotoComprafk = fabMotoComprafk;
-        this.fechaCompra     = fechaCompra;
+        this.fabComprafk = fabComprafk;
+        setFechaCompra(fechaCompra);
     }
+
+    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk){
+        this.codigoCompra    = codigoCompra;
+        this.aliasComprafk   = aliasComprafk;
+        this.fabComprafk = fabComprafk;
+        setFechaCompra();
+    }
+
+    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk, String fechaCompra){
+        this.codigoCompra    = 0;
+        this.codigoCompra    = 0;
+        this.aliasComprafk   = aliasComprafk;
+        this.fabComprafk = fabComprafk;
+        setFechaCompra(fechaCompra);
+    }
+
+    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk){
+        this.codigoCompra    = 0;
+        this.aliasComprafk   = aliasComprafk;
+        this.fabComprafk = fabComprafk;
+        setFechaCompra();
+    }
+
 
     public int getCodigoCompra() {
         return codigoCompra;
@@ -24,37 +48,50 @@ public class IntencionCompraModel {
         this.codigoCompra = codigoCompra;
     }
 
-    public String getAliasComprafk() {
+    public ClienteModel getAliasComprafk() {
         return aliasComprafk;
     }
 
-    public void setAliasComprafk(String aliasComprafk) {
+    public void setAliasComprafk(ClienteModel aliasComprafk) {
         this.aliasComprafk = aliasComprafk;
     }
 
-    public String getFabBiciComprafk() {
-        return fabBiciComprafk;
+    public Vehiculo getFabComprafk() {
+        return fabComprafk;
     }
 
-    public void setFabBiciComprafk(String fabBiciComprafk) {
-        this.fabBiciComprafk = fabBiciComprafk;
+    public void setFabComprafk(Vehiculo fabComprafk) {
+        this.fabComprafk = fabComprafk;
     }
 
-    public String getFabMotoComprafk() {
-        return fabMotoComprafk;
-    }
-
-    public void setFabMotoComprafk(String fabMotoComprafk) {
-        this.fabMotoComprafk = fabMotoComprafk;
-    }
-
-    public String getFechaCompra() {
+    public Date getFechaCompra() {
         return fechaCompra;
     }
 
     public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
+        // yyyy/MM/dd
+        int year = Integer.valueOf(fechaCompra.substring(0, 4));
+        int month = Integer.valueOf(fechaCompra.substring(5, 7));
+        int day = Integer.valueOf(fechaCompra.substring(8, 10));
+        int hour = Integer.valueOf(fechaCompra.substring(11, 13));
+        int min = Integer.valueOf(fechaCompra.substring(14, 16));
+        int sec = Integer.valueOf(fechaCompra.substring(17, 19));
+
+        java.util.Date fechaJava = new java.util.Date(year, month, day, hour, min, sec);
+        long fechaEnMilisegundos = fechaJava.getTime();
+        Date fechaSql = new Date(fechaEnMilisegundos);
+        this.fechaCompra = fechaSql;
     }
+
+    public void setFechaCompra() {
+        // yyyy/MM/dd
+        java.util.Date fechaJava = new java.util.Date();
+        long fechaEnMilisegundos = fechaJava.getTime();
+        Date fechaSql = new Date(fechaEnMilisegundos);
+        this.fechaCompra = fechaSql;
+    }
+
+
 }
 
 
