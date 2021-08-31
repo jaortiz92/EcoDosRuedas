@@ -6,10 +6,10 @@ public class ClienteModel {
     private String apellido;
     private String email;
     private String celular; // String?
-    private int contrasena;
+    private String contrasena;
     private String fechaNacimiento;
     
-    public ClienteModel(String alias, String nombre, String apellido, String email, String celular, int contrasena, String fechaNacimiento){
+    public ClienteModel(String alias, String nombre, String apellido, String email, String celular, String contrasena, String fechaNacimiento){
         this.alias           = alias;
         this.nombre          = nombre;
         this.apellido        = apellido;
@@ -59,11 +59,11 @@ public class ClienteModel {
         this.celular = celular;
     }
 
-    public int getContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(int contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 

@@ -21,7 +21,7 @@ CREATE TABLE clientes (
     apellido VARCHAR(12) NOT NULL,
     email VARCHAR(30) NULL,
     celular CHAR(12) NULL,
-    contrasena INT NULL,
+    contrasena CHAR(8) NULL,
     fecha_nacimiento DATE NULL
 );
 INSERT INTO clientes VALUES ('lucky', 'Pedro', 'Perez', 'lucky@gmail.com', '3178561234', 12345678, '1980-01-15');
@@ -36,7 +36,7 @@ INSERT INTO clientes VALUES ('green', 'Jorge', 'Rodriguez', 'green@hotmail.com',
 DROP TABLE IF EXISTS fabricanes;
 CREATE TABLE fabricantes (
 	proveedor_del_motor VARCHAR(20) PRIMARY KEY,
-    proveedor_dirección VARCHAR(30) NOT NULL,
+    proveedor_direccion VARCHAR(30) NOT NULL,
     proveedor_teléfono 	VARCHAR(30) NOT NULL
 );
 INSERT INTO fabricantes VALUES ("Auteco", "calle 7 No. 45-17", "05713224459");
@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS motocicletas_electricas;
 CREATE TABLE motocicletas_electricas (
 	fabricante VARCHAR(20) PRIMARY KEY,
     precio_unitario INT NOT NULL,
-    autonomia VARCHAR(20) NOT NULL,
+    autonomia INT NOT NULL,
     proveedor_del_motor_fk VARCHAR(20) NOT NULL,
     FOREIGN KEY(proveedor_del_motor_fk) REFERENCES fabricantes(proveedor_del_motor)
 );
@@ -60,8 +60,8 @@ INSERT INTO motocicletas_electricas VALUES ("Aima", 8000000, "36 horas", "Bosch"
 INSERT INTO motocicletas_electricas VALUES ("Mec de Colombia", 5900000, "20 horas", "Teco");
 INSERT INTO motocicletas_electricas VALUES ("Atom Electric", 4500000, "12 horas", "General Electric");
 
-DROP TABLE IF EXISTS intención_de_compra;
-CREATE TABLE intención_de_compra(
+DROP TABLE IF EXISTS intencion_de_compra;
+CREATE TABLE intencion_de_compra(
 	codigo INT AUTO_INCREMENT PRIMARY KEY,
     alias_fk VARCHAR(12) NOT NULL,
     fabricante_bici_fk VARCHAR(15) NULL,
@@ -70,37 +70,37 @@ CREATE TABLE intención_de_compra(
     FOREIGN KEY(fabricante_bici_fk) REFERENCES bicicletas(fabricante),
     FOREIGN KEY(fabricante_moto_fk) REFERENCES motocicletas_electricas(fabricante)
 );
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("lucky", "Cannondale", '2017-10-25 20:00:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("lucky", "Trek", '2019-03-15 18:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("lucky", "Starker", '2019-05-20 20:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("malopez", "Cannondale", '2018-05-20 20:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("malopez", "Starker", '2020-01-20 20:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("diva", "Yeti", '2019-05-20 20:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("diva", "Fuji", '2018-06-22 21:30:00');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("diva", "Lucky Lion", '2020-03-17 15:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("dreamer", "Lucky Lion", '2020-03-17 15:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("dreamer", "Be Electric", '2020-04-10 18:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("ninja", "Aima", '2020-02-17 20:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("ninja", "Starker", '2020-02-20 16:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("ninja", "Mec de Colombia", '2020-03-27 18:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_moto_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha)
 VALUES ("rose", "Atom Electric", '2020-03-20 21:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("green", "Yeti", '2020-01-10 17:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("green", "Trek", '2020-02-15 20:30:20');
-INSERT INTO intención_de_compra(alias_fk, fabricante_bici_fk, fecha)
+INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha)
 VALUES ("green", "Bmc", '2020-03-17 18:30:20');
