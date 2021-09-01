@@ -85,8 +85,8 @@ public class BicicletaDAO {
                                         + "\nError :" + ex.getMessage());
         }
     }
-
-    public void borrarBicicleta(String id) {
+        // Cambio el void por el boolean para poder hacer el metodo en el controller
+    public boolean borrarBicicleta(String id) {
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -102,5 +102,6 @@ public class BicicletaDAO {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         }
+        return false;
     }
 }

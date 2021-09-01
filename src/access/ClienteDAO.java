@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class ClienteDAO {
     private Connection connection = null;
-
-    public void insertarCliente(ClienteModel cliente) {
+            // Cambio el void por el boolean para poder hacer el metodo en el controller
+    public boolean insertarCliente(ClienteModel cliente) {
         try {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
@@ -33,6 +33,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cliente no agregado\nError: " + e);
         }
+        return false;
     }
 
     public ArrayList<ClienteModel> leerCliente() {
@@ -63,8 +64,8 @@ public class ClienteDAO {
         }
         return clientes;
     }
-
-    public void modificarCliente(ClienteModel cliente) {
+            //Cambio el void por el boolean para poder hacer el metodo en el controller
+    public boolean modificarCliente(ClienteModel cliente) {
         try {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
@@ -88,9 +89,10 @@ public class ClienteDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cliente no modificado\nError: " + e);
         }
+        return false;
     }
-
-    public void eliminarCliente(String alias) {
+            // Cambio el void por el boolean para poder hacer el metodo en el controller
+    public boolean eliminarCliente(String alias) {
         try {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
@@ -107,5 +109,6 @@ public class ClienteDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cliente no eliminado\nError: " + e);
         }
+        return false;
     }
 }
