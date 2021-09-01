@@ -64,7 +64,22 @@ public class IntencionCompraDAO {
 
     }
 
-    public void eliminarIntencionCompra(){
-
+    public void eliminarIntencionCompra(int id, String Alias) {
+        try {
+            if (connection == null) {
+                connection = ConeccionDB.getConeccion();
+            }
+            String sql = "DELETE FROM intencion_de_compra WHERE codigo=? AND alias_fk=?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.setString(2, Alias);
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted > 0) {
+                JOptionPane.showMessageDialog(null, "La motocicleta fue borrada exitosamente !");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        }
     }
 }
