@@ -85,4 +85,16 @@ public class ClienteModel {
         Date date = new Date( year - 1900 , month - 1, day);
         this.fechaNacimiento = date;
     }
+
+    @Override
+    public String toString() {
+        return "ClienteModel{" +
+                "alias='" + alias + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", email='" + email + '\'' +
+                ", celular='" + celular + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                '}';
+    }
 }
