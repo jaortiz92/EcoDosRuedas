@@ -10,29 +10,28 @@ public class IntencionCompraModel {
     private Vehiculo fabComprafk;
     private Date fechaCompra; // Date
     
-    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk, String fechaCompra){
+    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
         setFechaCompra(fechaCompra);
     }
 
-    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk){
+    public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
         setFechaCompra();
     }
 
-    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk, String fechaCompra){
-        this.codigoCompra    = 0;
+    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
         this.codigoCompra    = 0;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
         setFechaCompra(fechaCompra);
     }
 
-    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, MotocicletaElectricaModel fabMotoComprafk){
+    public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk){
         this.codigoCompra    = 0;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;

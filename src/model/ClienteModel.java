@@ -21,6 +21,10 @@ public class ClienteModel {
         setFechaNacimiento(fechaNacimiento);
     }
 
+    public ClienteModel(String alias){
+        this.alias = alias;
+    }
+
     public String getAlias() {
         return alias;
     }

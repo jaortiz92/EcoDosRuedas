@@ -1,11 +1,16 @@
 package access;
 
+import model.ClienteModel;
 import model.IntencionCompraModel;
+import model.MotocicletaElectricaModel;
+import model.Vehiculo;
 import utils.ConeccionDB;
 
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -25,11 +30,11 @@ public class IntencionCompraDAO {
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "El Cliente fue ingresado");
+                JOptionPane.showMessageDialog(null, "La intencion de compra fue ingresada");
             }
             connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cliente no agregado\nError: " + e);
+            JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
         }
     }
 
@@ -46,16 +51,43 @@ public class IntencionCompraDAO {
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "El Cliente fue ingresado");
+                JOptionPane.showMessageDialog(null, "La intencion de compra fue ingresada");
             }
             connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cliente no agregado\nError: " + e);
+            JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
         }
     }
 
     public ArrayList<IntencionCompraModel> leerIntencionCompra(){
         ArrayList<IntencionCompraModel> intencionesCompra = new ArrayList<>();
+        try {
+            if (connection == null) {
+                connection = ConeccionDB.getConeccion();
+            }
+            String sql = "SELECT * FROM intencion_de_compra";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()){
+                Vehiculo vehiculo;
+                if (result.getString(3).equalsIgnoreCase("null")){
+                    vehiculo = new Vehiculo(result.getString(4));
+                } else {
+                    vehiculo = new Vehiculo(result.getString(3));
+                }
+
+                IntencionCompraModel intencionCompra = new IntencionCompraModel(
+                        result.getInt(1),
+                        new ClienteModel(result.getString(2)),
+                        vehiculo,
+                        result.getString(5)
+                );
+                intencionesCompra.add(intencionCompra);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "La tabla intencion de compra genero error\nError: " + e);
+        }
 
         return intencionesCompra;
     }
