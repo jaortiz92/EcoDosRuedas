@@ -32,7 +32,7 @@ public class Controller implements ActionListener {
         String comando = actionEvent.getActionCommand();
         if (comando.equals("CLIENTEMOSTAR")){
             ArrayList<ClienteModel> clientes = clienteDAO.leerCliente();
-            ventana.inicializarPanelMostrarClientes(clientes);
+            ventana.getResultados().inicializarPanelMostrarClientes(clientes);
         }
         ventana.repaint();
     }

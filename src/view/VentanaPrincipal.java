@@ -18,9 +18,8 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuModificarCliente;
     private JMenuItem menuEliminarCliente;
 
+    private VentanaResultados resultados;
 
-
-    private VentanaMostrarCliente ventanaMostrarCliente;
 
     public VentanaPrincipal(){
         setTitle("EcoDosRuedas");
@@ -38,17 +37,10 @@ public class VentanaPrincipal extends JFrame {
     public void inicializarComponente(){
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
-
-
         agregarMenuClientes();
 
-
-    }
-
-    public void inicializarPanelMostrarClientes(ArrayList<ClienteModel> datosClientes){
-        ventanaMostrarCliente = new VentanaMostrarCliente(datosClientes);
-        getContentPane().add(ventanaMostrarCliente, BorderLayout.CENTER);
-
+        resultados = new VentanaResultados();
+        getContentPane().add(resultados);
     }
 
     public void agregarMenuClientes(){
@@ -92,7 +84,7 @@ public class VentanaPrincipal extends JFrame {
         return menuEliminarCliente;
     }
 
-    public VentanaMostrarCliente getVentanaMostrarCliente() {
-        return ventanaMostrarCliente;
+    public VentanaResultados getResultados() {
+        return resultados;
     }
 }

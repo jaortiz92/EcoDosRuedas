@@ -57,7 +57,7 @@ public class ClienteDAO {
 
                 clientes.add(cliente);
             }
-            connection.close();
+            //connection.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
@@ -84,7 +84,7 @@ public class ClienteDAO {
             if (lineaModificada > 0) {
                 JOptionPane.showMessageDialog(null, "El Cliente " + cliente.getAlias() + " fue modificado");
             }
-            connection.close();
+            //connection.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cliente no modificado\nError: " + e);
         }
