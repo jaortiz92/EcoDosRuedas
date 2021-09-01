@@ -9,6 +9,10 @@ public class Vehiculo {
         this.precioUnitario = precioUnitario;
     }
 
+    public Vehiculo(String fabricante){
+        this.fabricante     = fabricante;
+    }
+
     public String getFabricante() {
         return fabricante;
     }
