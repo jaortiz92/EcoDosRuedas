@@ -22,6 +22,7 @@ public class Controller implements ActionListener {
         ventana = new VentanaPrincipal();
         asignarOyentes();
         clienteDAO = new ClienteDAO();
+        bicicletaDAO = new BicicletaDAO();
 
     }
 
@@ -41,9 +42,9 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         String comando = actionEvent.getActionCommand();
        //Datos para Cliente
-       String alias, nombre, apellido, email, celular, contrasena, fechaNacimiento = "";
+       String alias, nombre, apellido, email, celular, contrasena, fechaNacimiento;
        //Datos para la Bicicleta
-       String fabricanteBici = "";
+       String fabricanteBici;
        int precioUnitarioBici, ano = 0;
         
         if (comando.equals("CLIENTEMOSTAR")){
@@ -64,18 +65,19 @@ public class Controller implements ActionListener {
         }
         //revisar como continuar para convertir de string a date y para crear el cliente
         
-        else if (comando.equals("ADICIONAR")) {
+        else if (comando.equals("CLIENTECREAR")) {
             alias = ventana.leerDatoString("Ingresar alias:\n");
             nombre = ventana.leerDatoString("Ingresar nombre:\n");
             apellido = ventana.leerDatoString("Ingresar apellido:\n");
             email = ventana.leerDatoString("Ingresar email:\n");
-            celular = ventana.leerDatoString("Ingresar email\n");
+            celular = ventana.leerDatoString("Ingresar celular\n");
             contrasena = ventana.leerDatoString("Ingresar contraseña\n");
             fechaNacimiento = ventana.leerDatoString("Ingresar fecha de nacimiento (YYYY-MM-DD):\n");
+            ClienteModel cliente = new ClienteModel(alias, nombre, apellido, email, celular, contrasena, fechaNacimiento);
             if (clienteDAO.insertarCliente(cliente)) {
-                ventana.mostrarInformacion("Se agregó el estudiante\n");
+                ventana.mostrarInformacion("Se agregó el cliente\n");
             } else {
-                ventana.mostrarInformacion("No se agregó el estudiante\n");
+                ventana.mostrarInformacion("No se agregó el cliente\n");
             }
         }
         
@@ -97,6 +99,4 @@ public class Controller implements ActionListener {
         }
         ventana.repaint();
     }
-    
-    
 }

@@ -4,7 +4,7 @@ USE RETO5;
 
 DROP TABLE IF EXISTS bicicletas;
 CREATE TABLE bicicletas (
-    fabricante VARCHAR(15) PRIMARY KEY,
+    fabricante VARCHAR(40) PRIMARY KEY,
     precio_unitario INT NOT NULL,
     ano INT NOT NULL
 );
@@ -19,8 +19,8 @@ CREATE TABLE clientes (
 	alias VARCHAR(12) PRIMARY KEY,
     nombre VARCHAR(12) NOT NULL,
     apellido VARCHAR(12) NOT NULL,
-    email VARCHAR(30) NULL,
-    celular CHAR(12) NULL,
+    email VARCHAR(50) NULL,
+    celular CHAR(20) NULL,
     contrasena CHAR(8) NULL,
     fecha_nacimiento DATE NULL
 );
@@ -47,7 +47,7 @@ INSERT INTO fabricantes VALUES ("General Electric", "calle 29 No. 26-12", "05717
 
 DROP TABLE IF EXISTS motocicletas_electricas;
 CREATE TABLE motocicletas_electricas (
-	fabricante VARCHAR(20) PRIMARY KEY,
+	fabricante VARCHAR(40) PRIMARY KEY,
     precio_unitario INT NOT NULL,
     autonomia INT NOT NULL,
     proveedor_del_motor_fk VARCHAR(20) NOT NULL,

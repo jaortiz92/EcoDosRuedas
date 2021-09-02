@@ -23,18 +23,18 @@ public class BicicletaDAO {
     private Connection conn = null;
     
     public ArrayList<BicicletaModel> leerBicicletas() {
-        ArrayList<BicicletaModel> bicicletas = new ArrayList();
+        ArrayList<BicicletaModel> bicicletas = new ArrayList<>();
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
             
-            String sql = "SELECT fabricante, precio_unitario, ano FROM bicicletas;";
+            String sql = "SELECT fabricante, precio_unitario, ano FROM bicicletas ORDER BY fabricante, ano;";
             Statement statement = conn.createStatement();
             ResultSet result    = statement.executeQuery(sql);
             
             while (result.next()) {
-                BicicletaModel Bicicleta = new BicicletaModel(result.getString(1), result.getInt(2), result.getInt(3));
-                bicicletas.add(Bicicleta);
+                BicicletaModel bicicleta = new BicicletaModel(result.getString(1), result.getInt(2), result.getInt(3));
+                bicicletas.add(bicicleta);
             }
         } 
         catch (SQLException ex) {
@@ -96,7 +96,8 @@ public class BicicletaDAO {
             statement.setString(1, id);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                JOptionPane.showMessageDialog(null, "La bicicleta fue borrada exitosamente !");
+                //JOptionPane.showMessageDialog(null, "La bicicleta fue borrada exitosamente !");
+                return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "

@@ -16,7 +16,7 @@ public class VentanaResultados extends JPanel {
     }
     //Cambio de color a gris claro
     public void inicializarComponentes(){
-        setLayout(new FlowLayout());
+        setLayout(new GridLayout(1, 1));
         setBackground(Color.lightGray);
         
     }
@@ -24,14 +24,14 @@ public class VentanaResultados extends JPanel {
     public void inicializarPanelMostrarClientes(ArrayList<ClienteModel> datosClientes){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarCliente(datosClientes);
-        add(ventanaResultados, BorderLayout.CENTER);
+        add(ventanaResultados);
         updateUI();
     }
     //Creacion del metodo para mostrar resultados de bicicleta
     public void inicializarPanelMostrarBicicletas(ArrayList<BicicletaModel> datosBicicletas){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarBicicleta(datosBicicletas);
-        add(ventanaResultados, BorderLayout.CENTER);
+        add(ventanaResultados);
         updateUI();
     }
 }

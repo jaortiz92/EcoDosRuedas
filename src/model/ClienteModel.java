@@ -7,7 +7,7 @@ public class ClienteModel {
     private String nombre;
     private String apellido;
     private String email;
-    private String celular; // String?
+    private String celular;
     private String contrasena;
     private Date fechaNacimiento;
     

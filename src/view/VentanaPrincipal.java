@@ -30,9 +30,10 @@ public class VentanaPrincipal extends JFrame {
 
     public VentanaPrincipal(){
         setTitle("EcoDosRuedas");
-        setSize(800, 600);
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.lightGray);
+        setLayout(new GridLayout(1, 1));
 
         inicializarComponente();
         setResizable(true);

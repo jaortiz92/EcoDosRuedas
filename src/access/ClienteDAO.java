@@ -27,11 +27,12 @@ public class ClienteDAO {
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "El Cliente fue ingresado");
+                //JOptionPane.showMessageDialog(null, "El Cliente fue ingresado");
+                return true;
             }
-            connection.close();
+            //connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cliente no agregado\nError: " + e);
+            //JOptionPane.showMessageDialog(null, "Cliente no agregado\nError: " + e);
         }
         return false;
     }
@@ -42,7 +43,7 @@ public class ClienteDAO {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
             }
-            String sql = "SELECT * FROM clientes;";
+            String sql = "SELECT * FROM clientes ORDER BY nombre, apellido, alias;";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
 
@@ -83,7 +84,8 @@ public class ClienteDAO {
 
             int lineaModificada = statement.executeUpdate();
             if (lineaModificada > 0) {
-                JOptionPane.showMessageDialog(null, "El Cliente " + cliente.getAlias() + " fue modificado");
+                //JOptionPane.showMessageDialog(null, "El Cliente " + cliente.getAlias() + " fue modificado");
+                return true;
             }
             //connection.close();
         } catch (SQLException e) {
@@ -103,11 +105,12 @@ public class ClienteDAO {
 
             int lineaModificada = statement.executeUpdate();
             if (lineaModificada > 0) {
-                JOptionPane.showMessageDialog(null, "El Cliente " + alias + " fue eliminado");
+                //JOptionPane.showMessageDialog(null, "El Cliente " + alias + " fue eliminado");
+                return true;
             }
-            connection.close();
+            //connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cliente no eliminado\nError: " + e);
+            //JOptionPane.showMessageDialog(null, "Cliente no eliminado\nError: " + e);
         }
         return false;
     }
