@@ -43,7 +43,7 @@ public class ClienteDAO {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
             }
-            String sql = "SELECT * FROM clientes ORDER BY nombre, apellido, alias;";
+            String sql = "SELECT * FROM clientes ORDER BY alias, nombre, apellido;";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
 

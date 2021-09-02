@@ -28,7 +28,7 @@ public class VentanaPrincipal extends JFrame {
     private VentanaResultados resultados;
 
 
-    public VentanaPrincipal(){
+    public VentanaPrincipal() {
         setTitle("EcoDosRuedas");
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +42,7 @@ public class VentanaPrincipal extends JFrame {
 
     }
 
-    public void inicializarComponente(){
+    public void inicializarComponente() {
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
         agregarMenus();
@@ -51,10 +51,14 @@ public class VentanaPrincipal extends JFrame {
         getContentPane().add(resultados);
     }
 
-    public void agregarMenus(){
+    public void agregarMenus() {
         menuCliente = new JMenu("Clientes");
         menuBar.add(menuCliente);
+        addMenuCliente();
+        addMenuBiciclta();
+    }
 
+    private void addMenuCliente() {
         menuMostrarCliente = new JMenuItem("Mostar Clientes");
         menuCliente.add(menuMostrarCliente);
         menuMostrarCliente.setActionCommand("CLIENTEMOSTAR");
@@ -70,11 +74,12 @@ public class VentanaPrincipal extends JFrame {
         menuCrearCliente = new JMenuItem("Crear Cliente");
         menuCliente.add(menuCrearCliente);
         menuCrearCliente.setActionCommand("CLIENTECREAR");
-        
-        //Creacion de los JMenu y JMenuItem de bicicleta
+    }
+
+    private void addMenuBiciclta() {
         menuBicicleta = new JMenu("Bicicleta");
         menuBar.add(menuCliente);
-        
+
         menuBicicleta = new JMenu("Bicicletas");
         menuBar.add(menuBicicleta);
 
@@ -94,20 +99,13 @@ public class VentanaPrincipal extends JFrame {
         menuBicicleta.add(menuCrearBicicleta);
         menuCrearBicicleta.setActionCommand("BICICLETACREAR");
     }
-    
-    
-    
+
     public String leerDatoString(String mensaje) {
-        String dato = JOptionPane.showInputDialog(mensaje);
-        return dato;
+        return JOptionPane.showInputDialog(mensaje);
     }
-    
+
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(null,mensaje);
-    }
-    
-    public JMenu getMenuCliente() {
-        return menuCliente;
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     public JMenuItem getMenuMostrarCliente() {
@@ -125,10 +123,6 @@ public class VentanaPrincipal extends JFrame {
     public JMenuItem getMenuEliminarCliente() {
         return menuEliminarCliente;
     }
-    //Creacion de getters y setters de Bicicletas
-    public JMenu getMenuBicicleta() {
-        return menuBicicleta;
-    }
 
     public JMenuItem getMenuMostrarBicicleta() {
         return menuMostrarBicicleta;
@@ -145,7 +139,7 @@ public class VentanaPrincipal extends JFrame {
     public JMenuItem getMenuEliminarBicicleta() {
         return menuEliminarBicicleta;
     }
-    
+
     public VentanaResultados getResultados() {
         return resultados;
     }
