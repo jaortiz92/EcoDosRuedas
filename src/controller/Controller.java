@@ -31,16 +31,19 @@ public class Controller implements ActionListener {
         ventana.getMenuModificarCliente().addActionListener(this);
         ventana.getMenuCrearCliente().addActionListener(this);
         ventana.getMenuEliminarCliente().addActionListener(this);
+        ventana.getMenuBuscarClienteAlias().addActionListener(this);
         //Revisar
         ventana.getMenuMostrarBicicleta().addActionListener(this);
         ventana.getMenuModificarBicicleta().addActionListener(this);
         ventana.getMenuCrearBicicleta().addActionListener(this);
         ventana.getMenuEliminarBicicleta().addActionListener(this);
+        ventana.getMenuBuscarBicicletaFabricante().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String comando = actionEvent.getActionCommand();
+        String primaryKey;
 
         switch (comando) {
             case "CLIENTEMOSTAR":
@@ -51,8 +54,15 @@ public class Controller implements ActionListener {
                 clienteMostar();
                 break;
             case "CLIENTECREAR":
-                clientecrear();
-                clienteMostar();
+                primaryKey = clientecrear();
+                clienteBuscarAlias(primaryKey);
+                break;
+            case "CLIENTEMODIFICAR":
+                primaryKey = clienteModificar();
+                clienteBuscarAlias(primaryKey);
+                break;
+            case "CLIENTEBUSCARALIAS":
+                clienteBuscarAlias();
                 break;
             case "BICICLETAMOSTAR":
                 bicicletaMostar();
@@ -61,6 +71,16 @@ public class Controller implements ActionListener {
                 bicicletaEliminar();
                 bicicletaMostar();
                 break;
+            case "BICICLETACREAR":
+                primaryKey = bicicletaCrear();
+                bicicletaBuscarFabricante(primaryKey);
+                break;
+            case "BICICLETAMODIFICAR":
+                primaryKey = bicicletaModificar();
+                bicicletaBuscarFabricante(primaryKey);
+                break;
+            case "BICICLETABUSCARFABRICANTE":
+                bicicletaBuscarFabricante();
         }
         ventana.repaint();
     }
@@ -81,7 +101,7 @@ public class Controller implements ActionListener {
         }
     }
 
-    private void clientecrear(){
+    private String clientecrear(){
         String alias, nombre, apellido, email, celular, contrasena, fechaNacimiento;
 
         alias = ventana.leerDatoString("Ingresar alias:\n");
@@ -97,6 +117,37 @@ public class Controller implements ActionListener {
         } else {
             ventana.mostrarInformacion("No se agregó el cliente\n");
         }
+        return alias;
+    }
+
+    private String clienteModificar(){
+        String alias, nombre, apellido, email, celular, contrasena, fechaNacimiento;
+
+        alias = ventana.leerDatoString("Ingresar alias a modificar:\n");
+        nombre = ventana.leerDatoString("Ingresar nombre:\n");
+        apellido = ventana.leerDatoString("Ingresar apellido:\n");
+        email = ventana.leerDatoString("Ingresar email:\n");
+        celular = ventana.leerDatoString("Ingresar celular\n");
+        contrasena = ventana.leerDatoString("Ingresar contraseña\n");
+        fechaNacimiento = ventana.leerDatoString("Ingresar fecha de nacimiento (YYYY-MM-DD):\n");
+        ClienteModel cliente = new ClienteModel(alias, nombre, apellido, email, celular, contrasena, fechaNacimiento);
+        if (clienteDAO.modificarCliente(cliente)) {
+            ventana.mostrarInformacion("Se modifico el cliente\n");
+        } else {
+            ventana.mostrarInformacion("No se modifico el cliente\n");
+        }
+        return alias;
+    }
+
+    private void clienteBuscarAlias(String alias){
+        ArrayList<ClienteModel> clientes = clienteDAO.buscarCliente(alias);
+        ventana.getResultados().inicializarPanelMostrarClientes(clientes);
+    }
+
+    private void clienteBuscarAlias(){
+        String alias = ventana.leerDatoString("Ingresar alias a buscar:\n");
+        ArrayList<ClienteModel> clientes = clienteDAO.buscarCliente(alias);
+        ventana.getResultados().inicializarPanelMostrarClientes(clientes);
     }
 
     private void bicicletaMostar(){
@@ -113,5 +164,48 @@ public class Controller implements ActionListener {
         else {
             ventana.mostrarInformacion("No se eliminó la bicicleta\n");
         }
+    }
+
+    private String bicicletaCrear(){
+        String fabricanteBici;
+        int precioUnitarioBici;
+        int ano;
+        fabricanteBici = ventana.leerDatoString("Ingresar marcar de bicicleta:\n");
+        precioUnitarioBici = Integer.parseInt(ventana.leerDatoString("Ingresar precio:\n"));
+        ano = Integer.parseInt(ventana.leerDatoString("Ingresar año:\n"));
+        BicicletaModel bicicleta = new BicicletaModel(fabricanteBici, precioUnitarioBici, ano);
+        if (bicicletaDAO.insertarBicicleta(bicicleta)) {
+            ventana.mostrarInformacion("Se agregó la bicicleta\n");
+        } else {
+            ventana.mostrarInformacion("No se agregó la bicicleta\n");
+        }
+        return fabricanteBici;
+    }
+
+    private String bicicletaModificar(){
+        String fabricanteBici;
+        int precioUnitarioBici;
+        int ano;
+        fabricanteBici = ventana.leerDatoString("Ingresar marcar de bicicleta a modificar:\n");
+        precioUnitarioBici = Integer.parseInt(ventana.leerDatoString("Ingresar precio:\n"));
+        ano = Integer.parseInt(ventana.leerDatoString("Ingresar año:\n"));
+        BicicletaModel bicicleta = new BicicletaModel(fabricanteBici, precioUnitarioBici, ano);
+        if (bicicletaDAO.insertarBicicleta(bicicleta)) {
+            ventana.mostrarInformacion("Se modifico la bicicleta\n");
+        } else {
+            ventana.mostrarInformacion("No se modifico la bicicleta\n");
+        }
+        return fabricanteBici;
+    }
+
+    private void bicicletaBuscarFabricante(String fabricanteBici){
+        ArrayList<BicicletaModel> bicicletas = bicicletaDAO.buscarBicicletas(fabricanteBici);
+        ventana.getResultados().inicializarPanelMostrarBicicletas(bicicletas);
+    }
+
+    private void bicicletaBuscarFabricante(){
+        String fabricanteBici = ventana.leerDatoString("Ingresar fabricante de bicicleta a buscar:\n");
+        ArrayList<BicicletaModel> bicicletas = bicicletaDAO.buscarBicicletas(fabricanteBici);
+        ventana.getResultados().inicializarPanelMostrarBicicletas(bicicletas);
     }
 }

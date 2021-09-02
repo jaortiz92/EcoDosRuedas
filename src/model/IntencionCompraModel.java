@@ -89,8 +89,6 @@ public class IntencionCompraModel {
         Date fechaSql = new Date(fechaEnMilisegundos);
         this.fechaCompra = fechaSql;
     }
-
-
 }
 
 

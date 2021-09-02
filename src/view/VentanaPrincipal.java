@@ -19,11 +19,13 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuCrearCliente;
     private JMenuItem menuModificarCliente;
     private JMenuItem menuEliminarCliente;
+    private JMenuItem menuBuscarClienteAlias;
     //Agregue los JMenuItem del JMenu de las bicicletas
     private JMenuItem menuMostrarBicicleta;
     private JMenuItem menuCrearBicicleta;
     private JMenuItem menuModificarBicicleta;
     private JMenuItem menuEliminarBicicleta;
+    private JMenuItem menuBuscarBicicletaFabricante;
 
     private VentanaResultados resultados;
 
@@ -63,6 +65,10 @@ public class VentanaPrincipal extends JFrame {
         menuCliente.add(menuMostrarCliente);
         menuMostrarCliente.setActionCommand("CLIENTEMOSTAR");
 
+        menuBuscarClienteAlias = new JMenuItem("Buscar Cliente por Alias");
+        menuCliente.add(menuBuscarClienteAlias);
+        menuBuscarClienteAlias.setActionCommand("CLIENTEBUSCARALIAS");
+
         menuModificarCliente = new JMenuItem("Modificar Cliente");
         menuCliente.add(menuModificarCliente);
         menuModificarCliente.setActionCommand("CLIENTEMODIFICAR");
@@ -87,6 +93,10 @@ public class VentanaPrincipal extends JFrame {
         menuBicicleta.add(menuMostrarBicicleta);
         menuMostrarBicicleta.setActionCommand("BICICLETAMOSTAR");
 
+        menuBuscarBicicletaFabricante = new JMenuItem("Buscar Bicicleta por Fabricante");
+        menuBicicleta.add(menuBuscarBicicletaFabricante);
+        menuBuscarBicicletaFabricante.setActionCommand("BICICLETABUSCARFABRICANTE");
+
         menuModificarBicicleta = new JMenuItem("Modificar Bicicleta");
         menuBicicleta.add(menuModificarBicicleta);
         menuModificarBicicleta.setActionCommand("BICICLETAMODIFICAR");
@@ -98,6 +108,8 @@ public class VentanaPrincipal extends JFrame {
         menuCrearBicicleta = new JMenuItem("Crear Bicicleta");
         menuBicicleta.add(menuCrearBicicleta);
         menuCrearBicicleta.setActionCommand("BICICLETACREAR");
+
+
     }
 
     public String leerDatoString(String mensaje) {
@@ -138,6 +150,14 @@ public class VentanaPrincipal extends JFrame {
 
     public JMenuItem getMenuEliminarBicicleta() {
         return menuEliminarBicicleta;
+    }
+
+    public JMenuItem getMenuBuscarClienteAlias() {
+        return menuBuscarClienteAlias;
+    }
+
+    public JMenuItem getMenuBuscarBicicletaFabricante() {
+        return menuBuscarBicicletaFabricante;
     }
 
     public VentanaResultados getResultados() {

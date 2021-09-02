@@ -44,8 +44,31 @@ public class BicicletaDAO {
         return bicicletas;
     }
 
+    public ArrayList<BicicletaModel> buscarBicicletas(String fabricanteBici) {
+        ArrayList<BicicletaModel> bicicletas = new ArrayList<>();
+        try {
+            if(conn == null)
+                conn = ConeccionDB.getConeccion();
 
-    public void insertarBicicleta(BicicletaModel bicicleta){
+            String sql = "SELECT fabricante, precio_unitario, ano FROM bicicletas WHERE fabricante = ? ORDER BY fabricante, ano;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, fabricanteBici);
+            ResultSet result    = statement.executeQuery();
+
+            while (result.next()) {
+                BicicletaModel bicicleta = new BicicletaModel(result.getString(1), result.getInt(2), result.getInt(3));
+                bicicletas.add(bicicleta);
+            }
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode()
+                    + "\nError :" + ex.getMessage());
+        }
+        return bicicletas;
+    }
+
+
+    public boolean insertarBicicleta(BicicletaModel bicicleta){
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -58,11 +81,13 @@ public class BicicletaDAO {
             
             int rowsInserted = statement.executeUpdate();
             if(rowsInserted > 0) 
-                JOptionPane.showMessageDialog(null, "La bicicleta fue agregada exitosamente !");
+                //JOptionPane.showMessageDialog(null, "La bicicleta fue agregada exitosamente !");
+                return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode() 
                                         + "\nError :" + ex.getMessage());
         }
+        return false;
     }
     
 

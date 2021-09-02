@@ -65,6 +65,36 @@ public class ClienteDAO {
         }
         return clientes;
     }
+
+    public ArrayList<ClienteModel> buscarCliente(String alias) {
+        ArrayList<ClienteModel> clientes = new ArrayList<>();
+        try {
+            if (connection == null) {
+                connection = ConeccionDB.getConeccion();
+            }
+            String sql = "SELECT * FROM clientes WHERE alias = ? ORDER BY alias, nombre, apellido;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, alias);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                ClienteModel cliente = new ClienteModel(
+                        result.getString(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getString(7));
+
+                clientes.add(cliente);
+            }
+            //connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return clientes;
+    }
             //Cambio el void por el boolean para poder hacer el metodo en el controller
     public boolean modificarCliente(ClienteModel cliente) {
         try {
