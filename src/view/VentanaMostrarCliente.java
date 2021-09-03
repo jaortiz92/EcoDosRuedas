@@ -7,18 +7,20 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+//Creación de la clase VentanaMostrarCliente
 public class VentanaMostrarCliente extends JPanel {
     private JTable jTable;
     private JScrollPane jScrollPane;
-
+    
+    //Creación del metodo constructor VentanaMostrarCliente
     public VentanaMostrarCliente(ArrayList<ClienteModel> datosClientes){
         setLayout(new GridLayout(1, 1));
         inicializarComponentes(datosClientes);
         setVisible(true);
         updateUI();
-
     }
-
+    
+    //Creación del metodo inicializarComponentes
     public void inicializarComponentes(ArrayList<ClienteModel> datosClientes){
         //jTable = new JTable();
         addData(datosClientes);
@@ -26,9 +28,9 @@ public class VentanaMostrarCliente extends JPanel {
         jTable.setSize(1000, 1000);
         jScrollPane = new JScrollPane(jTable);
         add(jScrollPane);
-
     }
-
+    
+    //Getters y Setters
     public JTable getjTable() {
         return jTable;
     }
@@ -36,7 +38,8 @@ public class VentanaMostrarCliente extends JPanel {
     public void setjTable(JTable jTable) {
         this.jTable = jTable;
     }
-
+    
+    //Creación del metodo addData
     public void addData(ArrayList<ClienteModel> datosClientes){
 
         String[] titulos = {"Alias", "Nombre", "Apellidos", "Email", "Celular", "Fecha de Nacimiento"};
@@ -51,5 +54,4 @@ public class VentanaMostrarCliente extends JPanel {
         }
         jTable = new JTable(valores, titulos);
     }
-
 }

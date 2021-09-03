@@ -2,21 +2,22 @@
 package model;
 
 import java.sql.Date;
-//import java.util.Date;
 
+//Creación de la clase IntencionCompraModel de acuerdo a las caracteristicas de la base de datos
 public class IntencionCompraModel {
-    private int codigoCompra;/* Revisar si se usa un autoincrement dependiendo de lo que se vaya a hacer*/
+    private int codigoCompra;
     private ClienteModel aliasComprafk;
     private Vehiculo fabComprafk;
-    private Date fechaCompra; // Date
+    private Date fechaCompra; 
     
+    //Creación del metodo constructor
     public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
         setFechaCompra(fechaCompra);
     }
-
+    //Sobrecargas del metodo constructor
     public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
@@ -38,7 +39,7 @@ public class IntencionCompraModel {
         setFechaCompra();
     }
 
-
+    //Getters y Setters
     public int getCodigoCompra() {
         return codigoCompra;
     }
@@ -69,25 +70,23 @@ public class IntencionCompraModel {
 
     public void setFechaCompra(String fechaCompra) {
         // yyyy/MM/dd
-        int year = Integer.valueOf(fechaCompra.substring(0, 4));
-        int month = Integer.valueOf(fechaCompra.substring(5, 7));
-        int day = Integer.valueOf(fechaCompra.substring(8, 10));
-        int hour = Integer.valueOf(fechaCompra.substring(11, 13));
-        int min = Integer.valueOf(fechaCompra.substring(14, 16));
-        int sec = Integer.valueOf(fechaCompra.substring(17, 19));
+        int year = Integer.parseInt(fechaCompra.substring(0, 4));
+        int month = Integer.parseInt(fechaCompra.substring(5, 7));
+        int day = Integer.parseInt(fechaCompra.substring(8, 10));
+        int hour = Integer.parseInt(fechaCompra.substring(11, 13));
+        int min = Integer.parseInt(fechaCompra.substring(14, 16));
+        int sec = Integer.parseInt(fechaCompra.substring(17, 19));
 
         java.util.Date fechaJava = new java.util.Date(year, month, day, hour, min, sec);
         long fechaEnMilisegundos = fechaJava.getTime();
-        Date fechaSql = new Date(fechaEnMilisegundos);
-        this.fechaCompra = fechaSql;
+        this.fechaCompra = new Date(fechaEnMilisegundos);
     }
 
     public void setFechaCompra() {
         // yyyy/MM/dd
         java.util.Date fechaJava = new java.util.Date();
         long fechaEnMilisegundos = fechaJava.getTime();
-        Date fechaSql = new Date(fechaEnMilisegundos);
-        this.fechaCompra = fechaSql;
+        this.fechaCompra = new Date(fechaEnMilisegundos);
     }
 }
 

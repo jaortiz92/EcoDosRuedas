@@ -14,9 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//Creación de la clase IntencionCompraDAO (Data Access Object)
 public class IntencionCompraDAO {
     private Connection connection = null;
-
+    
+    //Creación del metodo insertarIntencionCompraBici
     public void insertarIntencionCompraBici(IntencionCompraModel intencionCompra){
         try {
             if (connection == null) {
@@ -37,7 +39,8 @@ public class IntencionCompraDAO {
             JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
         }
     }
-
+    
+    //Creación del metodo insertarIntencionCompraMoto
     public void insertarIntencionCompraMoto(IntencionCompraModel intencionCompra){
         try {
             if (connection == null) {
@@ -58,7 +61,8 @@ public class IntencionCompraDAO {
             JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
         }
     }
-
+    
+    //Creación del metodo leerIntencionCompra
     public ArrayList<IntencionCompraModel> leerIntencionCompra(){
         ArrayList<IntencionCompraModel> intencionesCompra = new ArrayList<>();
         try {
@@ -91,11 +95,8 @@ public class IntencionCompraDAO {
 
         return intencionesCompra;
     }
-
-    public void modificarIntencionCompra(){
-
-    }
-
+    
+    //Creación del metodo eliminarIntencionCompra
     public void eliminarIntencionCompra(int id, String Alias) {
         try {
             if (connection == null) {

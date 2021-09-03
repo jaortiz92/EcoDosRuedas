@@ -7,7 +7,7 @@ import java.awt.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
-
+//Creación de la clase VentanaPrincipal
 public class VentanaPrincipal extends JFrame {
 
     private JMenuBar menuBar;
@@ -20,7 +20,6 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuModificarCliente;
     private JMenuItem menuEliminarCliente;
     private JMenuItem menuBuscarClienteAlias;
-    //Agregue los JMenuItem del JMenu de las bicicletas
     private JMenuItem menuMostrarBicicleta;
     private JMenuItem menuCrearBicicleta;
     private JMenuItem menuModificarBicicleta;
@@ -29,21 +28,20 @@ public class VentanaPrincipal extends JFrame {
 
     private VentanaResultados resultados;
 
-
+    //Creación del metodo constructor VentanaPrincipal
     public VentanaPrincipal() {
         setTitle("EcoDosRuedas");
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.lightGray);
         setLayout(new GridLayout(1, 1));
-
         inicializarComponente();
         setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
-
     }
 
+    //Creación del metodo inicializarComponente
     public void inicializarComponente() {
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -53,13 +51,15 @@ public class VentanaPrincipal extends JFrame {
         getContentPane().add(resultados);
     }
 
+    //Creación del metodo agregarMenus
     public void agregarMenus() {
         menuCliente = new JMenu("Clientes");
         menuBar.add(menuCliente);
         addMenuCliente();
-        addMenuBiciclta();
+        addMenuBicicleta();
     }
-
+    
+    //Creación del metodo addMenuCliente
     private void addMenuCliente() {
         menuMostrarCliente = new JMenuItem("Mostar Clientes");
         menuCliente.add(menuMostrarCliente);
@@ -82,7 +82,8 @@ public class VentanaPrincipal extends JFrame {
         menuCrearCliente.setActionCommand("CLIENTECREAR");
     }
 
-    private void addMenuBiciclta() {
+    //Creación del metodo addMenuBicicleta
+    private void addMenuBicicleta() {
         menuBicicleta = new JMenu("Bicicleta");
         menuBar.add(menuCliente);
 
@@ -112,14 +113,17 @@ public class VentanaPrincipal extends JFrame {
 
     }
 
+    //Creación del metodo ieerDatoString
     public String leerDatoString(String mensaje) {
         return JOptionPane.showInputDialog(mensaje);
     }
 
+    //Creación del metodo mostrarInformacion
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
 
+    //Creación de los Getters
     public JMenuItem getMenuMostrarCliente() {
         return menuMostrarCliente;
     }

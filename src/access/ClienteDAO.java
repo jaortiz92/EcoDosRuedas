@@ -7,9 +7,11 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 
+//Creación de la clase ClienteDAO (Data Access Object)
 public class ClienteDAO {
     private Connection connection = null;
-            // Cambio el void por el boolean para poder hacer el metodo en el controller
+    
+    //Creación del metodo insertarCliente
     public boolean insertarCliente(ClienteModel cliente) {
         try {
             if (connection == null) {
@@ -36,7 +38,8 @@ public class ClienteDAO {
         }
         return false;
     }
-
+    
+    //Creación del metodo leerCliente
     public ArrayList<ClienteModel> leerCliente() {
         ArrayList<ClienteModel> clientes = new ArrayList<>();
         try {
@@ -66,6 +69,7 @@ public class ClienteDAO {
         return clientes;
     }
 
+    //Creación del metodo buscarCliente
     public ArrayList<ClienteModel> buscarCliente(String alias) {
         ArrayList<ClienteModel> clientes = new ArrayList<>();
         try {
@@ -95,7 +99,8 @@ public class ClienteDAO {
         }
         return clientes;
     }
-            //Cambio el void por el boolean para poder hacer el metodo en el controller
+    
+    //Creación del metodo modificarCliente
     public boolean modificarCliente(ClienteModel cliente) {
         try {
             if (connection == null) {
@@ -123,7 +128,8 @@ public class ClienteDAO {
         }
         return false;
     }
-            // Cambio el void por el boolean para poder hacer el metodo en el controller
+    
+    //Creación del metodo eliminarCliente
     public boolean eliminarCliente(String alias) {
         try {
             if (connection == null) {

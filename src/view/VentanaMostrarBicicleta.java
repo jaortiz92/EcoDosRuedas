@@ -1,5 +1,3 @@
-//CREACION DE LA VENTANA MOSTRAR BICICLETA TAL COMO LA DE CLIENTE
-
 package view;
 
 import model.BicicletaModel;
@@ -9,10 +7,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+//Creación de la clase VentanaMostrarBicicleta
 public class VentanaMostrarBicicleta extends JPanel {
     private JTable jTable;
     private JScrollPane jScrollPane;
-
+    
+    //Creación del metodo constructor VentanaMostrarBicicleta
     public VentanaMostrarBicicleta(ArrayList<BicicletaModel> datosBicicletas) {
         setLayout(new GridLayout(1, 1));
         inicializarComponentes(datosBicicletas);
@@ -20,7 +20,8 @@ public class VentanaMostrarBicicleta extends JPanel {
         updateUI();
 
     }
-
+    
+    //Creación del metodo inicializarComponentes
     public void inicializarComponentes(ArrayList<BicicletaModel> datosBicicleta) {
         //jTable = new JTable();
         addData(datosBicicleta);
@@ -29,7 +30,8 @@ public class VentanaMostrarBicicleta extends JPanel {
         jScrollPane = new JScrollPane(jTable);
         add(jScrollPane, BorderLayout.CENTER);
     }
-
+    
+    //Getters y Setters
     public JTable getjTable() {
         return jTable;
     }
@@ -37,7 +39,8 @@ public class VentanaMostrarBicicleta extends JPanel {
     public void setjTable(JTable jTable) {
         this.jTable = jTable;
     }
-
+    
+    //Creación del metodo addData
     public void addData(ArrayList<BicicletaModel> datosBicicletas) {
         String[] titulos = {"Fabricante", "Precio Unitario", "Año de Lanzamiento"};
         String[][] valores = new String[datosBicicletas.size()][4];

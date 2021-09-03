@@ -7,27 +7,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+//Creación de la clase VentanaResultados
 public class VentanaResultados extends JPanel {
     private JPanel ventanaResultados;
 
+    //Creación del metodo constructor
     public VentanaResultados(){
         inicializarComponentes();
         setVisible(true);
     }
-    //Cambio de color a gris claro
+    
+    //Creación del metodo inicializarComponentes
     public void inicializarComponentes(){
         setLayout(new GridLayout(1, 1));
         setBackground(Color.lightGray);
         
     }
 
+    //Creación del metodo inicializarPanelMostrarClientes
     public void inicializarPanelMostrarClientes(ArrayList<ClienteModel> datosClientes){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarCliente(datosClientes);
         add(ventanaResultados);
         updateUI();
     }
-    //Creacion del metodo para mostrar resultados de bicicleta
+    //Creación del metodo inicializarPanelMostrarBicicletas
     public void inicializarPanelMostrarBicicletas(ArrayList<BicicletaModel> datosBicicletas){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarBicicleta(datosBicicletas);

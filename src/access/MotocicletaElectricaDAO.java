@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package access;
 
 import java.sql.Connection;
@@ -18,12 +13,13 @@ import model.MotocicletaElectricaModel;
 import utils.ConeccionDB;
 
 
-
+//Creación de la clase MotocicletaElectricaDAO (Data Access Object)
 public class MotocicletaElectricaDAO {
     private Connection conn = null;
     
+    //Creación del metodo leerMotocicletas
     public ArrayList<MotocicletaElectricaModel> leerMotocicletas() {
-        ArrayList<MotocicletaElectricaModel> motocicletas = new ArrayList();
+        ArrayList<MotocicletaElectricaModel> motocicletas = new ArrayList<>();
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -44,6 +40,7 @@ public class MotocicletaElectricaDAO {
         return motocicletas;
     }
     
+    //Creación del metodo insertarMotocicletaElectrica
     public void insertarMotocicletaElectrica(MotocicletaElectricaModel motocicleta){
         try {
             if(conn == null)
@@ -65,6 +62,7 @@ public class MotocicletaElectricaDAO {
         }
     }
     
+    //Creación del metodo modificarMotocicletaElectrica
     public void modificarMotocicletaElectrica(MotocicletaElectricaModel motocicleta) {
         try {
             if(conn == null)
@@ -86,7 +84,7 @@ public class MotocicletaElectricaDAO {
         }
     }
     
-    
+    //Creación del metodo borrarMotocicletaElectrica
     public void borrarMotocicleta(String id) {
         try {
             if(conn == null)

@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Creación de la clase ConeccionDB
 public class ConeccionDB {
+    
+    //Creación del metodo getConeccion
     public static Connection getConeccion(){
         JSONParser parser = new JSONParser();
         Connection conn = null;
@@ -29,10 +32,7 @@ public class ConeccionDB {
             //if( conn != null )
             //    System.out.println ( "Conectado" );
         }
-        catch( SQLException | FileNotFoundException ex ) {
-            ex.printStackTrace();
-        }
-        catch (IOException | ParseException ex) {
+        catch(IOException | SQLException | ParseException ex ) {
             ex.printStackTrace();
         }
 

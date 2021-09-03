@@ -2,7 +2,9 @@ package model;
 
 import java.sql.Date;
 
+//Creación de la clase Cliente de acuerdo a las caracteristicas de la base de datos
 public class ClienteModel {
+    //Inicialización de los atributos
     private String alias;
     private String nombre;
     private String apellido;
@@ -11,6 +13,7 @@ public class ClienteModel {
     private String contrasena;
     private Date fechaNacimiento;
     
+    //Creación del metodo constructor
     public ClienteModel(String alias, String nombre, String apellido, String email, String celular, String contrasena, String fechaNacimiento){
         this.alias           = alias;
         this.nombre          = nombre;
@@ -20,7 +23,7 @@ public class ClienteModel {
         this.contrasena      = contrasena;
         setFechaNacimiento(fechaNacimiento);
     }
-
+    //Getters y Setters
     public ClienteModel(String alias){
         this.alias = alias;
     }
@@ -76,12 +79,12 @@ public class ClienteModel {
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
-
+    //Conversión de la fecha de nacimiento a tipo Date
     public void setFechaNacimiento(String fechaNacimiento) {
         // yyyy/MM/dd
-        int year = Integer.valueOf(fechaNacimiento.substring(0, 4));
-        int month = Integer.valueOf(fechaNacimiento.substring(5, 7));
-        int day = Integer.valueOf(fechaNacimiento.substring(8, 10));
+        int year = Integer.parseInt(fechaNacimiento.substring(0, 4));
+        int month = Integer.parseInt(fechaNacimiento.substring(5, 7));
+        int day = Integer.parseInt(fechaNacimiento.substring(8, 10));
         Date date = new Date( year - 1900 , month - 1, day);
         this.fechaNacimiento = date;
     }

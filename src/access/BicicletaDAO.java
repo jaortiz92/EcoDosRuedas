@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package access;
 
 import java.sql.Connection;
@@ -18,10 +13,11 @@ import model.BicicletaModel;
 import utils.ConeccionDB;
 
 
-
+//Creación de la clase BicicletaDAO (Data Access Object)
 public class BicicletaDAO {
     private Connection conn = null;
     
+    //Creación del metodo leerBicicletas
     public ArrayList<BicicletaModel> leerBicicletas() {
         ArrayList<BicicletaModel> bicicletas = new ArrayList<>();
         try {
@@ -43,7 +39,8 @@ public class BicicletaDAO {
         }
         return bicicletas;
     }
-
+    
+    //Creación del metodo buscarBicicletas
     public ArrayList<BicicletaModel> buscarBicicletas(String fabricanteBici) {
         ArrayList<BicicletaModel> bicicletas = new ArrayList<>();
         try {
@@ -67,7 +64,7 @@ public class BicicletaDAO {
         return bicicletas;
     }
 
-
+    //Creación del metodo insertarBicicleta
     public boolean insertarBicicleta(BicicletaModel bicicleta){
         try {
             if(conn == null)
@@ -90,7 +87,7 @@ public class BicicletaDAO {
         return false;
     }
     
-
+    //Creación del metodo modificarBicicletas
     public void modificarBicicleta(BicicletaModel bicicleta) {
         try {
             if(conn == null)
@@ -110,7 +107,8 @@ public class BicicletaDAO {
                                         + "\nError :" + ex.getMessage());
         }
     }
-        // Cambio el void por el boolean para poder hacer el metodo en el controller
+    
+    //Creación del metodo borrarBicicletas
     public boolean borrarBicicleta(String id) {
         try {
             if(conn == null)
