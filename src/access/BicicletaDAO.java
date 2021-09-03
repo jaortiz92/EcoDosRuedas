@@ -88,7 +88,7 @@ public class BicicletaDAO {
     }
     
     //Creación del metodo modificarBicicletas
-    public void modificarBicicleta(BicicletaModel bicicleta) {
+    public boolean modificarBicicleta(BicicletaModel bicicleta) {
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -101,11 +101,13 @@ public class BicicletaDAO {
             
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) 
-                JOptionPane.showMessageDialog(null, "La bicicleta fue actualizada exitosamente !");
+                //JOptionPane.showMessageDialog(null, "La bicicleta fue actualizada exitosamente !");
+                return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode() 
                                         + "\nError :" + ex.getMessage());
         }
+        return false;
     }
     
     //Creación del metodo borrarBicicletas

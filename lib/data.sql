@@ -19,3 +19,35 @@ INSERT INTO `bicicletas` (`fabricante`,`precio_unitario`,`ano`) VALUES ("Luctus 
 INSERT INTO `bicicletas` (`fabricante`,`precio_unitario`,`ano`) VALUES ("Nonummy Ut Molestie LLC",2558438,2019),("Ullamcorper Corp",7090457,2014),("Ac Associates",17566028,1993),("Nunc Ac Consulting",16556839,2009),("Ligula Foundation",19847719,1997),("Et Malesuada Consulting",15650358,2017),("Sed LLP",18321515,2011),("Et Associates",8781548,1997),("Elit Elit Fermentum Inc",1350269,2019),("Diam Nunc Ullamcorper Institute",9667311,2001);
 INSERT INTO `bicicletas` (`fabricante`,`precio_unitario`,`ano`) VALUES ("Erat Nonummy Ultricies Corp",13298425,2015),("Sit Amet LLP",14143139,2020),("Scelerisque PC",19245561,2008),("Ac LLC",15562111,1990),("Ante Maecenas Mi Institute",5468881,1997),("Massa Rutrum Magna Limited",18325619,2006),("Non Consulting",14542684,2013),("Integer Associates",10226480,1997),("Fusce Institute",12515166,2014),("Duis Risus Foundation",15738083,2000);
 INSERT INTO `bicicletas` (`fabricante`,`precio_unitario`,`ano`) VALUES ("Nullam Feugiat Incorporated",8024378,2009),("Praesent Associates",2666211,2009),("Est Ac Mattis Ltd",4082103,2002),("Eleifend Egestas Sed Incorporated",12725903,2007),("Est Mauris PC",2403321,2021),("Suspendisse Commodo Industries",15983781,2014),("Dignissim Maecenas Ornare Corp",8269084,1994),("Porttitor Scelerisque Neque Incorporated",16620648,1998),("Aenean Sed LLP",2978132,2003),("Enim Commodo Hendrerit Corp",5721351,2016);
+
+
+INSERT INTO motocicletas_electricas VALUES	("Honda310",	5200000,	34,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("Yamaha130",	9400000,	40,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("BMW730",	3900000,	31,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("Piaggio140",	8400000,	18,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Kymko900",	7300000,	16,	 "Teco");
+INSERT INTO motocicletas_electricas VALUES	("Sym770",	5700000,	27,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("Kawasaki240",	6800000,	22,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("Zontes770",	7300000,	39,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("Honda260",	5300000,	20,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Yamaha480",	8600000,	15,	 "Teco");
+INSERT INTO motocicletas_electricas VALUES	("BMW160",	6900000,	14,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("Piaggio210",	8100000,	19,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("Kymko130",	8500000,	39,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("Sym550",	5200000,	14,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Kawasaki550",	9400000,	31,	 "Teco");
+INSERT INTO motocicletas_electricas VALUES	("Zontes240",	7300000,	27,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("Honda280",	9500000,	20,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("Yamaha620",	4900000,	24,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("BMW910",	5600000,	14,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Piaggio830",	5900000,	39,	 "Teco");
+INSERT INTO motocicletas_electricas VALUES	("Kymko300",	7600000,	22,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("Sym330",	9900000,	33,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("Kawasaki320",	3900000,	16,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("Zontes330",	8200000,	15,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Honda210",	3300000,	16,	 "Teco");
+INSERT INTO motocicletas_electricas VALUES	("Yamaha910",	3000000,	32,	 "Auteco");
+INSERT INTO motocicletas_electricas VALUES	("BMW460",	6000000,	18,	 "Bosch");
+INSERT INTO motocicletas_electricas VALUES	("Piaggio660",	7000000,	30,	 "General Electric");
+INSERT INTO motocicletas_electricas VALUES	("Kymko410",	8800000,	28,	 "Hitachi");
+INSERT INTO motocicletas_electricas VALUES	("Sym340",	6700000,	18,	 "Teco");

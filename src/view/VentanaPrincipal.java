@@ -25,6 +25,11 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuModificarBicicleta;
     private JMenuItem menuEliminarBicicleta;
     private JMenuItem menuBuscarBicicletaFabricante;
+    private JMenuItem menuMostrarMotocicleta;
+    private JMenuItem menuCrearMotocicleta;
+    private JMenuItem menuModificarMotocicleta;
+    private JMenuItem menuEliminarMotocicleta;
+    private JMenuItem menuBuscarMotocicletaFabricante;
 
     private VentanaResultados resultados;
 
@@ -57,6 +62,7 @@ public class VentanaPrincipal extends JFrame {
         menuBar.add(menuCliente);
         addMenuCliente();
         addMenuBicicleta();
+        addMenuMotocicletaElectrica();
     }
     
     //Creación del metodo addMenuCliente
@@ -84,9 +90,6 @@ public class VentanaPrincipal extends JFrame {
 
     //Creación del metodo addMenuBicicleta
     private void addMenuBicicleta() {
-        menuBicicleta = new JMenu("Bicicleta");
-        menuBar.add(menuCliente);
-
         menuBicicleta = new JMenu("Bicicletas");
         menuBar.add(menuBicicleta);
 
@@ -109,8 +112,32 @@ public class VentanaPrincipal extends JFrame {
         menuCrearBicicleta = new JMenuItem("Crear Bicicleta");
         menuBicicleta.add(menuCrearBicicleta);
         menuCrearBicicleta.setActionCommand("BICICLETACREAR");
+    }
 
+    private void addMenuMotocicletaElectrica() {
 
+        menuMotocicleta = new JMenu("Motocicleta Electrica");
+        menuBar.add(menuMotocicleta);
+
+        menuMostrarMotocicleta = new JMenuItem("Mostar Motocicleta Electrica");
+        menuMotocicleta.add(menuMostrarMotocicleta);
+        menuMostrarMotocicleta.setActionCommand("MOTOCICLETAMOSTAR");
+
+        menuBuscarMotocicletaFabricante = new JMenuItem("Buscar Motocicleta Electrica por Fabricante");
+        menuMotocicleta.add(menuBuscarMotocicletaFabricante);
+        menuBuscarMotocicletaFabricante.setActionCommand("MOTOCICLETABUSCARFABRICANTE");
+
+        menuModificarMotocicleta = new JMenuItem("Modificar Motocicleta Electrica");
+        menuMotocicleta.add(menuModificarMotocicleta);
+        menuModificarMotocicleta.setActionCommand("MOTOCICLETAMODIFICAR");
+
+        menuEliminarMotocicleta = new JMenuItem("Eliminar Motocicleta Electrica");
+        menuMotocicleta.add(menuEliminarMotocicleta);
+        menuEliminarMotocicleta.setActionCommand("MOTOCICLETAELIMINAR");
+
+        menuCrearMotocicleta = new JMenuItem("Crear Motocicleta Electrica");
+        menuMotocicleta.add(menuCrearMotocicleta);
+        menuCrearMotocicleta.setActionCommand("MOTOCICLETACREAR");
     }
 
     //Creación del metodo ieerDatoString
@@ -162,6 +189,26 @@ public class VentanaPrincipal extends JFrame {
 
     public JMenuItem getMenuBuscarBicicletaFabricante() {
         return menuBuscarBicicletaFabricante;
+    }
+
+    public JMenuItem getMenuMostrarMotocicleta() {
+        return menuMostrarMotocicleta;
+    }
+
+    public JMenuItem getMenuCrearMotocicleta() {
+        return menuCrearMotocicleta;
+    }
+
+    public JMenuItem getMenuModificarMotocicleta() {
+        return menuModificarMotocicleta;
+    }
+
+    public JMenuItem getMenuEliminarMotocicleta() {
+        return menuEliminarMotocicleta;
+    }
+
+    public JMenuItem getMenuBuscarMotocicletaFabricante() {
+        return menuBuscarMotocicletaFabricante;
     }
 
     public VentanaResultados getResultados() {

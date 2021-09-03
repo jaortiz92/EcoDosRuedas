@@ -1,9 +1,11 @@
 package controller;
 
 import access.ClienteDAO;
+import access.MotocicletaElectricaDAO;
 import model.ClienteModel;
 import access.BicicletaDAO;
 import model.BicicletaModel;
+import model.MotocicletaElectricaModel;
 import view.VentanaPrincipal;
 import java.sql.Date;
 
@@ -18,6 +20,7 @@ public class Controller implements ActionListener {
     private VentanaPrincipal    ventana;
     private ClienteDAO          clienteDAO;
     private BicicletaDAO        bicicletaDAO;
+    private MotocicletaElectricaDAO motocicletaElectricaDAO;
     
     //Creación del metodo Controller
     public Controller(){
@@ -25,7 +28,7 @@ public class Controller implements ActionListener {
         asignarOyentes();
         clienteDAO = new ClienteDAO();
         bicicletaDAO = new BicicletaDAO();
-
+        motocicletaElectricaDAO = new MotocicletaElectricaDAO();
     }
     
     //Creación del metodo Controller
@@ -40,6 +43,11 @@ public class Controller implements ActionListener {
         ventana.getMenuCrearBicicleta().addActionListener(this);
         ventana.getMenuEliminarBicicleta().addActionListener(this);
         ventana.getMenuBuscarBicicletaFabricante().addActionListener(this);
+        ventana.getMenuMostrarMotocicleta().addActionListener(this);
+        ventana.getMenuModificarMotocicleta().addActionListener(this);
+        ventana.getMenuCrearMotocicleta().addActionListener(this);
+        ventana.getMenuEliminarMotocicleta().addActionListener(this);
+        ventana.getMenuBuscarMotocicletaFabricante().addActionListener(this);
     }
     
     //Creación del metodo actionPerformed con el switch/case para cada acción del usuario
@@ -84,6 +92,24 @@ public class Controller implements ActionListener {
                 break;
             case "BICICLETABUSCARFABRICANTE":
                 bicicletaBuscarFabricante();
+
+            case "MOTOCICLETAMOSTAR":
+                motocicletaMostar();
+                break;
+            case "MOTOCICLETAELIMINAR":
+                motocicletaEliminar();
+                motocicletaMostar();
+                break;
+            case "MOTOCICLETACREAR":
+                primaryKey = motocicletaCrear();
+                motocicletaBuscarFabricante(primaryKey);
+                break;
+            case "MOTOCICLETAMODIFICAR":
+                primaryKey = motocicletaModificar();
+                motocicletaBuscarFabricante(primaryKey);
+                break;
+            case "MOTOCICLETABUSCARFABRICANTE":
+                motocicletaBuscarFabricante();
         }
         ventana.repaint();
     }
@@ -203,7 +229,7 @@ public class Controller implements ActionListener {
         precioUnitarioBici = Integer.parseInt(ventana.leerDatoString("Ingresar precio:\n"));
         ano = Integer.parseInt(ventana.leerDatoString("Ingresar año:\n"));
         BicicletaModel bicicleta = new BicicletaModel(fabricanteBici, precioUnitarioBici, ano);
-        if (bicicletaDAO.insertarBicicleta(bicicleta)) {
+        if (bicicletaDAO.modificarBicicleta(bicicleta)) {
             ventana.mostrarInformacion("Se modifico la bicicleta\n");
         } else {
             ventana.mostrarInformacion("No se modifico la bicicleta\n");
@@ -222,5 +248,75 @@ public class Controller implements ActionListener {
         String fabricanteBici = ventana.leerDatoString("Ingresar fabricante de bicicleta a buscar:\n");
         ArrayList<BicicletaModel> bicicletas = bicicletaDAO.buscarBicicletas(fabricanteBici);
         ventana.getResultados().inicializarPanelMostrarBicicletas(bicicletas);
+    }
+
+    //Creación del metodo motocicletaMostar
+    private void motocicletaMostar(){
+        ArrayList<MotocicletaElectricaModel> motocicletas = motocicletaElectricaDAO.leerMotocicletas();
+        ventana.getResultados().inicializarPanelMostrarMotocicletas(motocicletas);
+    }
+
+    //Creación del metodo motocicletaEliminar
+    private void motocicletaEliminar(){
+        String fabricanteMoto;
+        fabricanteMoto = ventana.leerDatoString("Ingresar Fabricante de la motocicleta:");
+        if (motocicletaElectricaDAO.borrarMotocicleta(fabricanteMoto)) {
+            ventana.mostrarInformacion("Se eliminó la motocicleta\n");
+        }
+        else {
+            ventana.mostrarInformacion("No se eliminó la motocicleta\n");
+        }
+    }
+
+    //Creación del metodo motocicletaCrear
+    private String motocicletaCrear(){
+        String fabricanteMoto;
+        int precioUnitarioMoto;
+        int autonomia;
+        String provMotorfk;
+
+        fabricanteMoto = ventana.leerDatoString("Ingresar marcar de motocicleta:\n");
+        precioUnitarioMoto = Integer.parseInt(ventana.leerDatoString("Ingresar precio:\n"));
+        autonomia = Integer.parseInt(ventana.leerDatoString("Ingresar autonomia:\n"));
+        provMotorfk = ventana.leerDatoString("Ingresar fabricante del motor:\n");
+        MotocicletaElectricaModel motocicleta = new MotocicletaElectricaModel(fabricanteMoto, precioUnitarioMoto, autonomia, provMotorfk);
+        if (motocicletaElectricaDAO.insertarMotocicletaElectrica(motocicleta)) {
+            ventana.mostrarInformacion("Se agregó la motocicleta\n");
+        } else {
+            ventana.mostrarInformacion("No se agregó la motocicleta\n");
+        }
+        return fabricanteMoto;
+    }
+
+    //Creación del metodo motocicletaModificar
+    private String motocicletaModificar(){
+        String fabricanteMoto;
+        int precioUnitarioMoto;
+        int autonomia;
+        String provMotorfk;
+        fabricanteMoto = ventana.leerDatoString("Ingresar marcar de motocicleta a modificar:\n");
+        precioUnitarioMoto = Integer.parseInt(ventana.leerDatoString("Ingresar precio:\n"));
+        autonomia = Integer.parseInt(ventana.leerDatoString("Ingresar autonomia:\n"));
+        provMotorfk = ventana.leerDatoString("Ingresar fabricante del motor:\n");
+        MotocicletaElectricaModel motocicleta = new MotocicletaElectricaModel(fabricanteMoto, precioUnitarioMoto, autonomia, provMotorfk);
+        if (motocicletaElectricaDAO.modificarMotocicletaElectrica(motocicleta)) {
+            ventana.mostrarInformacion("Se modifico la motocicleta\n");
+        } else {
+            ventana.mostrarInformacion("No se modifico la motocicleta\n");
+        }
+        return fabricanteMoto;
+    }
+
+    //Creación del metodo motocicletaBuscarFabricante
+    private void motocicletaBuscarFabricante(String fabricanteMoto){
+        ArrayList<MotocicletaElectricaModel> motocicletas = motocicletaElectricaDAO.buscarMotocicleta(fabricanteMoto);
+        ventana.getResultados().inicializarPanelMostrarMotocicletas(motocicletas);
+    }
+
+    //Sobrecarga del metodo motocicletaBuscarFabricante
+    private void motocicletaBuscarFabricante(){
+        String fabricanteMoto = ventana.leerDatoString("Ingresar fabricante de motocicleta a buscar:\n");
+        ArrayList<MotocicletaElectricaModel> motocicletas = motocicletaElectricaDAO.buscarMotocicleta(fabricanteMoto);
+        ventana.getResultados().inicializarPanelMostrarMotocicletas(motocicletas);
     }
 }

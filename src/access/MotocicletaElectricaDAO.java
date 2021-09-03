@@ -34,14 +34,37 @@ public class MotocicletaElectricaDAO {
             }
         } 
         catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode() 
+            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode()
                                         + "\nError :" + ex.getMessage());
         }
         return motocicletas;
     }
-    
+
+    public ArrayList<MotocicletaElectricaModel> buscarMotocicleta(String fabricanteMoto) {
+        ArrayList<MotocicletaElectricaModel> motocicletas = new ArrayList<>();
+        try {
+            if(conn == null)
+                conn = ConeccionDB.getConeccion();
+
+            String sql = "SELECT fabricante, precio_unitario, autonomia, proveedor_del_motor_fk FROM motocicletas_electricas WHERE fabricante = ? ;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, fabricanteMoto);
+            ResultSet result   = statement.executeQuery();
+
+            while (result.next()) {
+                MotocicletaElectricaModel motocicleta = new MotocicletaElectricaModel(result.getString(1), result.getInt(2), result.getInt(3), result.getString(4));
+                motocicletas.add(motocicleta);
+            }
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode()
+                    + "\nError :" + ex.getMessage());
+        }
+        return motocicletas;
+    }
+
     //Creación del metodo insertarMotocicletaElectrica
-    public void insertarMotocicletaElectrica(MotocicletaElectricaModel motocicleta){
+    public boolean insertarMotocicletaElectrica(MotocicletaElectricaModel motocicleta){
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -54,16 +77,19 @@ public class MotocicletaElectricaDAO {
             statement.setString(4, motocicleta.getProvMotorfk());
             
             int rowsInserted = statement.executeUpdate();
-            if(rowsInserted > 0) 
-                JOptionPane.showMessageDialog(null, "La motocicleta fue agregada exitosamente !");
+            if(rowsInserted > 0) {
+                //JOptionPane.showMessageDialog(null, "La motocicleta fue agregada exitosamente !");
+                return true;
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode() 
                                         + "\nError :" + ex.getMessage());
         }
+        return false;
     }
     
     //Creación del metodo modificarMotocicletaElectrica
-    public void modificarMotocicletaElectrica(MotocicletaElectricaModel motocicleta) {
+    public boolean modificarMotocicletaElectrica(MotocicletaElectricaModel motocicleta) {
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -76,16 +102,19 @@ public class MotocicletaElectricaDAO {
             statement.setString(4, motocicleta.getFabricante());
             
             int rowsUpdated = statement.executeUpdate();
-            if (rowsUpdated > 0) 
-                JOptionPane.showMessageDialog(null, "La motocicleta fue actualizada exitosamente !");
+            if (rowsUpdated > 0) {
+                //JOptionPane.showMessageDialog(null, "La motocicleta fue actualizada exitosamente !");
+                return true;
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode() 
                                         + "\nError :" + ex.getMessage());
         }
+        return false;
     }
     
     //Creación del metodo borrarMotocicletaElectrica
-    public void borrarMotocicleta(String id) {
+    public boolean borrarMotocicleta(String id) {
         try {
             if(conn == null)
                 conn = ConeccionDB.getConeccion();
@@ -95,11 +124,13 @@ public class MotocicletaElectricaDAO {
             statement.setString(1, id);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                JOptionPane.showMessageDialog(null, "La motocicleta fue borrada exitosamente !");
+                //JOptionPane.showMessageDialog(null, "La motocicleta fue borrada exitosamente !");
+                return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         }
+        return false;
     }
 }

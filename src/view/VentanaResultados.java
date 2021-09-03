@@ -2,6 +2,7 @@ package view;
 
 import model.ClienteModel;
 import model.BicicletaModel;
+import model.MotocicletaElectricaModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +22,6 @@ public class VentanaResultados extends JPanel {
     public void inicializarComponentes(){
         setLayout(new GridLayout(1, 1));
         setBackground(Color.lightGray);
-        
     }
 
     //Creación del metodo inicializarPanelMostrarClientes
@@ -35,6 +35,14 @@ public class VentanaResultados extends JPanel {
     public void inicializarPanelMostrarBicicletas(ArrayList<BicicletaModel> datosBicicletas){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarBicicleta(datosBicicletas);
+        add(ventanaResultados);
+        updateUI();
+    }
+
+    //Creación del metodo inicializarPanelMostrarMotocicletas
+    public void inicializarPanelMostrarMotocicletas(ArrayList<MotocicletaElectricaModel> datosMotocicletasElectricas){
+        if (this.getComponentCount() != 0) remove(ventanaResultados);
+        ventanaResultados = new VentanaMostrarMotocicletaElectrica(datosMotocicletasElectricas);
         add(ventanaResultados);
         updateUI();
     }
