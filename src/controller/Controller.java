@@ -17,10 +17,11 @@ import java.util.ArrayList;
 
 //Creación de la clase Controller
 public class Controller implements ActionListener {
-    private VentanaPrincipal    ventana;
+    private VentanaPrincipal ventana;
     private ControllerCliente controllerCliente;
     private ControllerBicicleta controllerBicicleta;
     private ControllerMotocicletaElectrica controllerMotocicletaElectrica;
+    private ControllerIntencionCompra controllerIntencionCompra;
     
     //Creación del metodo Controller
     public Controller(){
@@ -29,6 +30,7 @@ public class Controller implements ActionListener {
         controllerCliente = new ControllerCliente(ventana);
         controllerBicicleta = new ControllerBicicleta(ventana);
         controllerMotocicletaElectrica = new ControllerMotocicletaElectrica(ventana);
+        controllerIntencionCompra = new ControllerIntencionCompra(ventana);
     }
     
     //Creación del metodo Controller
@@ -48,6 +50,7 @@ public class Controller implements ActionListener {
         ventana.getMenuCrearMotocicleta().addActionListener(this);
         ventana.getMenuEliminarMotocicleta().addActionListener(this);
         ventana.getMenuBuscarMotocicletaFabricante().addActionListener(this);
+        ventana.getMenuMostrarIntencionCompra().addActionListener(this);
     }
     
     //Creación del metodo actionPerformed con el switch/case para cada acción del usuario
@@ -110,6 +113,9 @@ public class Controller implements ActionListener {
                 break;
             case "MOTOCICLETABUSCARFABRICANTE":
                 controllerMotocicletaElectrica.motocicletaBuscarFabricante();
+                break;
+            case "INTENCIONCOMPRAMOSTRAR":
+                controllerIntencionCompra.intencionCompraMostrar();
                 break;
         }
         ventana.repaint();

@@ -75,7 +75,7 @@ public class IntencionCompraDAO {
 
             while (result.next()){
                 Vehiculo vehiculo;
-                if (result.getString(3).equalsIgnoreCase("null")){
+                if (result.getString(3) == null){
                     vehiculo = new Vehiculo(result.getString(4));
                 } else {
                     vehiculo = new Vehiculo(result.getString(3));

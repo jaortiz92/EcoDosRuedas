@@ -30,6 +30,7 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuModificarMotocicleta;
     private JMenuItem menuEliminarMotocicleta;
     private JMenuItem menuBuscarMotocicletaFabricante;
+    private JMenuItem menuMostrarIntencionCompra;
 
     private VentanaResultados resultados;
 
@@ -63,11 +64,12 @@ public class VentanaPrincipal extends JFrame {
         addMenuCliente();
         addMenuBicicleta();
         addMenuMotocicletaElectrica();
+        addMenuIntencionesCompra();
     }
     
     //Creación del metodo addMenuCliente
     private void addMenuCliente() {
-        menuMostrarCliente = new JMenuItem("Mostar Clientes");
+        menuMostrarCliente = new JMenuItem("Mostrar Clientes");
         menuCliente.add(menuMostrarCliente);
         menuMostrarCliente.setActionCommand("CLIENTEMOSTAR");
 
@@ -93,7 +95,7 @@ public class VentanaPrincipal extends JFrame {
         menuBicicleta = new JMenu("Bicicletas");
         menuBar.add(menuBicicleta);
 
-        menuMostrarBicicleta = new JMenuItem("Mostar Bicicletas");
+        menuMostrarBicicleta = new JMenuItem("Mostrar Bicicletas");
         menuBicicleta.add(menuMostrarBicicleta);
         menuMostrarBicicleta.setActionCommand("BICICLETAMOSTAR");
 
@@ -119,7 +121,7 @@ public class VentanaPrincipal extends JFrame {
         menuMotocicleta = new JMenu("Motocicleta Electrica");
         menuBar.add(menuMotocicleta);
 
-        menuMostrarMotocicleta = new JMenuItem("Mostar Motocicleta Electrica");
+        menuMostrarMotocicleta = new JMenuItem("Mostrar Motocicletas Electricas");
         menuMotocicleta.add(menuMostrarMotocicleta);
         menuMostrarMotocicleta.setActionCommand("MOTOCICLETAMOSTAR");
 
@@ -138,6 +140,16 @@ public class VentanaPrincipal extends JFrame {
         menuCrearMotocicleta = new JMenuItem("Crear Motocicleta Electrica");
         menuMotocicleta.add(menuCrearMotocicleta);
         menuCrearMotocicleta.setActionCommand("MOTOCICLETACREAR");
+    }
+
+    private void addMenuIntencionesCompra(){
+        menuIntencionCompra = new JMenu("Intenciones de Compra");
+        menuBar.add(menuIntencionCompra);
+
+        menuMostrarIntencionCompra = new JMenuItem("Mostrar Intenciones de Compra");
+        menuIntencionCompra.add(menuMostrarIntencionCompra);
+        menuMostrarIntencionCompra.setActionCommand("INTENCIONCOMPRAMOSTRAR");
+
     }
 
     //Creación del metodo ieerDatoString
@@ -209,6 +221,10 @@ public class VentanaPrincipal extends JFrame {
 
     public JMenuItem getMenuBuscarMotocicletaFabricante() {
         return menuBuscarMotocicletaFabricante;
+    }
+
+    public JMenuItem getMenuMostrarIntencionCompra() {
+        return menuMostrarIntencionCompra;
     }
 
     public VentanaResultados getResultados() {

@@ -8,13 +8,15 @@ public class IntencionCompraModel {
     private int codigoCompra;
     private ClienteModel aliasComprafk;
     private Vehiculo fabComprafk;
-    private Date fechaCompra; 
+    private Date fechaCompra;
+    private String stringfecha;
     
     //Creación del metodo constructor
     public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
+        this.stringfecha = fechaCompra;
         setFechaCompra(fechaCompra);
     }
     //Sobrecargas del metodo constructor
@@ -66,6 +68,10 @@ public class IntencionCompraModel {
 
     public Date getFechaCompra() {
         return fechaCompra;
+    }
+
+    public String getStringfecha() {
+        return stringfecha;
     }
 
     public void setFechaCompra(String fechaCompra) {

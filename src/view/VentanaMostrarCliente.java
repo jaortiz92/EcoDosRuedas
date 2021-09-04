@@ -3,7 +3,6 @@ package view;
 import model.ClienteModel;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -22,7 +21,6 @@ public class VentanaMostrarCliente extends JPanel {
     
     //Creación del metodo inicializarComponentes
     public void inicializarComponentes(ArrayList<ClienteModel> datosClientes){
-        //jTable = new JTable();
         addData(datosClientes);
         //jTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable.setSize(1000, 1000);

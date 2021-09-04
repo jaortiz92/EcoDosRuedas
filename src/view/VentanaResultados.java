@@ -2,6 +2,7 @@ package view;
 
 import model.ClienteModel;
 import model.BicicletaModel;
+import model.IntencionCompraModel;
 import model.MotocicletaElectricaModel;
 
 import javax.swing.*;
@@ -43,6 +44,13 @@ public class VentanaResultados extends JPanel {
     public void inicializarPanelMostrarMotocicletas(ArrayList<MotocicletaElectricaModel> datosMotocicletasElectricas){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarMotocicletaElectrica(datosMotocicletasElectricas);
+        add(ventanaResultados);
+        updateUI();
+    }
+
+    public void inicializarPanelMostrarIntencionCompra(ArrayList<IntencionCompraModel> intencionesCompras){
+        if (this.getComponentCount() != 0) remove(ventanaResultados);
+        ventanaResultados = new VentanaMostrarIntencionCompra(intencionesCompras);
         add(ventanaResultados);
         updateUI();
     }
