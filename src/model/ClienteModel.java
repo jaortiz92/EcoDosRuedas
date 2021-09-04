@@ -81,12 +81,15 @@ public class ClienteModel {
     }
     //Conversión de la fecha de nacimiento a tipo Date
     public void setFechaNacimiento(String fechaNacimiento) {
-        // yyyy/MM/dd
         int year = Integer.parseInt(fechaNacimiento.substring(0, 4));
         int month = Integer.parseInt(fechaNacimiento.substring(5, 7));
         int day = Integer.parseInt(fechaNacimiento.substring(8, 10));
         Date date = new Date( year - 1900 , month - 1, day);
         this.fechaNacimiento = date;
+    }
+
+    public String stringAlias(){
+        return alias + ": " + nombre + " " + apellido;
     }
 
     @Override

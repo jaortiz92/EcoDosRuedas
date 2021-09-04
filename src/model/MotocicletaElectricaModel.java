@@ -29,4 +29,9 @@ public class MotocicletaElectricaModel extends  Vehiculo{
     public void setProvMotorfk(String provMotorfk) {
         this.provMotorfk = provMotorfk;
     }
+
+    @Override
+    public String stringFabricante(){
+        return "Motocicleta Electrica: " + getFabricante();
+    }
 }

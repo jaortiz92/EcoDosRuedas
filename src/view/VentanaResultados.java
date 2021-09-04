@@ -1,9 +1,6 @@
 package view;
 
-import model.ClienteModel;
-import model.BicicletaModel;
-import model.IntencionCompraModel;
-import model.MotocicletaElectricaModel;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,6 +48,13 @@ public class VentanaResultados extends JPanel {
     public void inicializarPanelMostrarIntencionCompra(ArrayList<IntencionCompraModel> intencionesCompras){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaMostrarIntencionCompra(intencionesCompras);
+        add(ventanaResultados);
+        updateUI();
+    }
+
+    public void inicializarPanelFormularioIntencionCompra(ArrayList<ClienteModel> clientes, ArrayList<Vehiculo> vehiculos){
+        if (this.getComponentCount() != 0) remove(ventanaResultados);
+        ventanaResultados = new VentanaFormularioIntencionCompra(clientes, vehiculos);
         add(ventanaResultados);
         updateUI();
     }

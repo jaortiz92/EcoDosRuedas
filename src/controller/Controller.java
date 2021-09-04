@@ -51,6 +51,7 @@ public class Controller implements ActionListener {
         ventana.getMenuEliminarMotocicleta().addActionListener(this);
         ventana.getMenuBuscarMotocicletaFabricante().addActionListener(this);
         ventana.getMenuMostrarIntencionCompra().addActionListener(this);
+        ventana.getMenuCrearIntencionCompra().addActionListener(this);
     }
     
     //Creación del metodo actionPerformed con el switch/case para cada acción del usuario
@@ -116,6 +117,9 @@ public class Controller implements ActionListener {
                 break;
             case "INTENCIONCOMPRAMOSTRAR":
                 controllerIntencionCompra.intencionCompraMostrar();
+                break;
+            case "INTENCIONCOMPRACREAR":
+                controllerIntencionCompra.intencionCompraCrear();
                 break;
         }
         ventana.repaint();

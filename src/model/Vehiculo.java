@@ -33,4 +33,8 @@ public class Vehiculo {
     public void setPrecioUnitario(int precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
+
+    public String stringFabricante(){
+        return "Vehiculo: " + fabricante;
+    }
 }

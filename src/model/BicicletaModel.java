@@ -21,4 +21,9 @@ public class BicicletaModel extends Vehiculo{
     public void setAno(int ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String stringFabricante(){
+        return "Bicicleta: " + getFabricante();
+    }
 }

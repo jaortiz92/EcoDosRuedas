@@ -31,6 +31,7 @@ public class VentanaPrincipal extends JFrame {
     private JMenuItem menuEliminarMotocicleta;
     private JMenuItem menuBuscarMotocicletaFabricante;
     private JMenuItem menuMostrarIntencionCompra;
+    private JMenuItem menuCrearIntencionCompra;
 
     private VentanaResultados resultados;
 
@@ -150,6 +151,10 @@ public class VentanaPrincipal extends JFrame {
         menuIntencionCompra.add(menuMostrarIntencionCompra);
         menuMostrarIntencionCompra.setActionCommand("INTENCIONCOMPRAMOSTRAR");
 
+        menuCrearIntencionCompra = new JMenuItem("Crear Intencion de Compra");
+        menuIntencionCompra.add(menuCrearIntencionCompra);
+        menuCrearIntencionCompra.setActionCommand("INTENCIONCOMPRACREAR");
+
     }
 
     //Creación del metodo ieerDatoString
@@ -225,6 +230,10 @@ public class VentanaPrincipal extends JFrame {
 
     public JMenuItem getMenuMostrarIntencionCompra() {
         return menuMostrarIntencionCompra;
+    }
+
+    public JMenuItem getMenuCrearIntencionCompra() {
+        return menuCrearIntencionCompra;
     }
 
     public VentanaResultados getResultados() {
