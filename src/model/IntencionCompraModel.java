@@ -1,18 +1,22 @@
 
 package model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 //Creación de la clase IntencionCompraModel de acuerdo a las caracteristicas de la base de datos
 public class IntencionCompraModel {
     private int codigoCompra;
     private ClienteModel aliasComprafk;
     private Vehiculo fabComprafk;
-    private Date fechaCompra;
+    private Timestamp fechaCompra;
     private String stringfecha;
+    private SimpleDateFormat formatoFecha;
     
     //Creación del metodo constructor
     public IntencionCompraModel(int codigoCompra, ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
+        formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.codigoCompra    = codigoCompra;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
@@ -28,6 +32,7 @@ public class IntencionCompraModel {
     }
 
     public IntencionCompraModel(ClienteModel aliasComprafk, Vehiculo fabComprafk, String fechaCompra){
+        formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.codigoCompra    = 0;
         this.aliasComprafk   = aliasComprafk;
         this.fabComprafk = fabComprafk;
@@ -66,7 +71,7 @@ public class IntencionCompraModel {
         this.fabComprafk = fabComprafk;
     }
 
-    public Date getFechaCompra() {
+    public Timestamp getFechaCompra() {
         return fechaCompra;
     }
 
@@ -75,25 +80,19 @@ public class IntencionCompraModel {
     }
 
     public void setFechaCompra(String fechaCompra) {
-        // yyyy/MM/dd
-        int year = Integer.parseInt(fechaCompra.substring(0, 4));
-        int month = Integer.parseInt(fechaCompra.substring(5, 7));
-        int day = Integer.parseInt(fechaCompra.substring(8, 10));
-        int hour = Integer.parseInt(fechaCompra.substring(11, 13));
-        int min = Integer.parseInt(fechaCompra.substring(14, 16));
-        int sec = Integer.parseInt(fechaCompra.substring(17, 19));
-
-        java.util.Date fechaJava = new java.util.Date(year, month, day, hour, min, sec);
+        java.util.Date fechaJava = null;
+        try {
+            fechaJava = formatoFecha.parse(fechaCompra);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         long fechaEnMilisegundos = fechaJava.getTime();
-        this.fechaCompra = new Date(fechaEnMilisegundos);
+        this.fechaCompra = new Timestamp(fechaEnMilisegundos);
     }
 
     public void setFechaCompra() {
-        // yyyy/MM/dd
         java.util.Date fechaJava = new java.util.Date();
         long fechaEnMilisegundos = fechaJava.getTime();
-        this.fechaCompra = new Date(fechaEnMilisegundos);
+        this.fechaCompra = new Timestamp(fechaEnMilisegundos);
     }
 }
-
-

@@ -39,7 +39,7 @@ public class VentanaMostrarIntencionCompra extends JPanel {
             valores[i][0] = String.valueOf(intencionesCompras.get(i).getCodigoCompra());
             valores[i][1] = intencionesCompras.get(i).getAliasComprafk().getAlias();
             valores[i][2] = intencionesCompras.get(i).getFabComprafk().getFabricante();
-            valores[i][3] = String.valueOf(intencionesCompras.get(i).getStringfecha());
+            valores[i][3] = intencionesCompras.get(i).getFechaCompra().toString().substring(0,19);
         }
         jTable = new JTable(valores, titulos);
     }

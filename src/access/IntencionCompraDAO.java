@@ -28,7 +28,7 @@ public class IntencionCompraDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, intencionCompra.getAliasComprafk().getAlias());
             statement.setString(2, intencionCompra.getFabComprafk().getFabricante());
-            statement.setDate(3, intencionCompra.getFechaCompra());
+            statement.setTimestamp(3, intencionCompra.getFechaCompra());
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
@@ -50,7 +50,7 @@ public class IntencionCompraDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, intencionCompra.getAliasComprafk().getAlias());
             statement.setString(2, intencionCompra.getFabComprafk().getFabricante());
-            statement.setDate(3, intencionCompra.getFechaCompra());
+            statement.setTimestamp(3, intencionCompra.getFechaCompra());
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
