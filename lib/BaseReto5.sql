@@ -64,8 +64,8 @@ DROP TABLE IF EXISTS intencion_de_compra;
 CREATE TABLE intencion_de_compra(
 	codigo INT AUTO_INCREMENT PRIMARY KEY,
     alias_fk VARCHAR(12) NOT NULL,
-    fabricante_bici_fk VARCHAR(15) NULL,
-    fabricante_moto_fk VARCHAR(20) NULL,
+    fabricante_bici_fk VARCHAR(40) NULL,
+    fabricante_moto_fk VARCHAR(40) NULL,
     fecha TIMESTAMP NOT NULL,
     FOREIGN KEY(fabricante_bici_fk) REFERENCES bicicletas(fabricante),
     FOREIGN KEY(fabricante_moto_fk) REFERENCES motocicletas_electricas(fabricante)

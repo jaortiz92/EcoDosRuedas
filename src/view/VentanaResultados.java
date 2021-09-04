@@ -52,10 +52,15 @@ public class VentanaResultados extends JPanel {
         updateUI();
     }
 
-    public void inicializarPanelFormularioIntencionCompra(ArrayList<ClienteModel> clientes, ArrayList<Vehiculo> vehiculos){
+    public VentanaFormularioIntencionCompra inicializarPanelFormularioIntencionCompra(ArrayList<ClienteModel> clientes, ArrayList<Vehiculo> vehiculos){
         if (this.getComponentCount() != 0) remove(ventanaResultados);
         ventanaResultados = new VentanaFormularioIntencionCompra(clientes, vehiculos);
         add(ventanaResultados);
         updateUI();
+        return (VentanaFormularioIntencionCompra) ventanaResultados;
+    }
+
+    public JPanel getVentanaResultados() {
+        return ventanaResultados;
     }
 }

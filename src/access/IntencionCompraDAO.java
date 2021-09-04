@@ -18,13 +18,19 @@ import java.util.ArrayList;
 public class IntencionCompraDAO {
     private Connection connection = null;
     
-    //Creación del metodo insertarIntencionCompraBici
-    public void insertarIntencionCompraBici(IntencionCompraModel intencionCompra){
+    //Creación del metodo insertarIntencionCompra
+    public boolean insertarIntencionCompra(IntencionCompraModel intencionCompra, boolean esBicicleta){
         try {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
             }
-            String sql = "INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha) VALUES (?, ?, ?, ?);";
+            String sql;
+            if (esBicicleta){
+                sql = "INSERT INTO intencion_de_compra(alias_fk, fabricante_bici_fk, fecha) VALUES (?, ?, ?);";
+            } else {
+                sql = "INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha) VALUES (?, ?, ?);";
+            }
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, intencionCompra.getAliasComprafk().getAlias());
             statement.setString(2, intencionCompra.getFabComprafk().getFabricante());
@@ -32,34 +38,13 @@ public class IntencionCompraDAO {
 
             int lineasInsertadas = statement.executeUpdate();
             if (lineasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "La intencion de compra fue ingresada");
+                //JOptionPane.showMessageDialog(null, "La intencion de compra fue ingresada");
+                return true;
             }
-            connection.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
         }
-    }
-    
-    //Creación del metodo insertarIntencionCompraMoto
-    public void insertarIntencionCompraMoto(IntencionCompraModel intencionCompra){
-        try {
-            if (connection == null) {
-                connection = ConeccionDB.getConeccion();
-            }
-            String sql = "INSERT INTO intencion_de_compra(alias_fk, fabricante_moto_fk, fecha) VALUES (?, ?, ?, ?);";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, intencionCompra.getAliasComprafk().getAlias());
-            statement.setString(2, intencionCompra.getFabComprafk().getFabricante());
-            statement.setTimestamp(3, intencionCompra.getFechaCompra());
-
-            int lineasInsertadas = statement.executeUpdate();
-            if (lineasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "La intencion de compra fue ingresada");
-            }
-            connection.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "La intencion de compra no fue ingresada\nError: " + e);
-        }
+        return false;
     }
     
     //Creación del metodo leerIntencionCompra
@@ -97,7 +82,7 @@ public class IntencionCompraDAO {
     }
     
     //Creación del metodo eliminarIntencionCompra
-    public void eliminarIntencionCompra(int id, String Alias) {
+    public boolean eliminarIntencionCompra(int id, String Alias) {
         try {
             if (connection == null) {
                 connection = ConeccionDB.getConeccion();
@@ -109,10 +94,12 @@ public class IntencionCompraDAO {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 JOptionPane.showMessageDialog(null, "La motocicleta fue borrada exitosamente !");
+                return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         }
+        return false;
     }
 }
