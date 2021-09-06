@@ -4,7 +4,6 @@ import java.sql.Date;
 
 //Creación de la clase Cliente de acuerdo a las caracteristicas de la base de datos
 public class ClienteModel {
-    //Inicialización de los atributos
     private String alias;
     private String nombre;
     private String apellido;

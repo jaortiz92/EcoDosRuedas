@@ -6,11 +6,13 @@ import view.VentanaPrincipal;
 
 import java.util.ArrayList;
 
+//Creación de la clase ControllerCliente
 public class ControllerCliente {
 
     private VentanaPrincipal ventana;
     private ClienteDAO clienteDAO;
-
+    
+    //Creación del metodo Constructor
     public ControllerCliente(VentanaPrincipal ventana){
         clienteDAO = new ClienteDAO();
         this.ventana = ventana;

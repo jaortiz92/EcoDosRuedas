@@ -6,6 +6,7 @@ import view.VentanaPrincipal;
 
 import java.util.ArrayList;
 
+//Creación de la clase ControllerBicicleta
 public class ControllerBicicleta {
     private VentanaPrincipal ventana;
     private BicicletaDAO bicicletaDAO;

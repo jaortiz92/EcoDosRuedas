@@ -23,7 +23,7 @@ public class Controller implements ActionListener {
     private ControllerMotocicletaElectrica controllerMotocicletaElectrica;
     private ControllerIntencionCompra controllerIntencionCompra;
     
-    //Creación del metodo Controller
+    //Creación del metodo Constructor
     public Controller(){
         ventana = new VentanaPrincipal();
         asignarOyentes();
@@ -33,7 +33,7 @@ public class Controller implements ActionListener {
         controllerIntencionCompra = new ControllerIntencionCompra(ventana);
     }
     
-    //Creación del metodo Controller
+    //Creación del metodo asignarOyentes
     public void asignarOyentes(){
         ventana.getMenuMostrarCliente().addActionListener(this);
         ventana.getMenuModificarCliente().addActionListener(this);

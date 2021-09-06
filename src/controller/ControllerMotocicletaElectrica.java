@@ -6,16 +6,16 @@ import view.VentanaPrincipal;
 
 import java.util.ArrayList;
 
+//Creación de la clase ControllerMotocicletaElectrica
 public class ControllerMotocicletaElectrica {
     private VentanaPrincipal ventana;
     private MotocicletaElectricaDAO motocicletaElectricaDAO;
 
+    //Creación del metodo Constructor
     public ControllerMotocicletaElectrica(VentanaPrincipal ventana){
         motocicletaElectricaDAO = new MotocicletaElectricaDAO();
         this.ventana = ventana;
     }
-
-
 
     //Creación del metodo motocicletaMostar
     public void motocicletaMostar(){

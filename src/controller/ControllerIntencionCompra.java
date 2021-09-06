@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//Creación de la clase ControllerIntencionCompra
 public class ControllerIntencionCompra implements ActionListener {
     private VentanaPrincipal ventana;
     private IntencionCompraDAO intencionCompraDAO;
@@ -20,6 +21,7 @@ public class ControllerIntencionCompra implements ActionListener {
     private MotocicletaElectricaDAO motocicletaElectricaDAO;
     private VentanaFormularioIntencionCompra ventanaFormularioIntencionCompra;
 
+    //Creación del metodo Constructor
     ControllerIntencionCompra(VentanaPrincipal ventana) {
         intencionCompraDAO = new IntencionCompraDAO();
         clienteDAO = new ClienteDAO();
@@ -28,11 +30,13 @@ public class ControllerIntencionCompra implements ActionListener {
         this.ventana = ventana;
     }
 
+    //Creación del metodo intencionCompraMostrar
     public void intencionCompraMostrar() {
         ArrayList<IntencionCompraModel> intencionesCompras = intencionCompraDAO.leerIntencionCompra();
         ventana.getResultados().inicializarPanelMostrarIntencionCompra(intencionesCompras);
     }
-
+    
+    //Creación del metodo intencionCompraCrear
     public void intencionCompraCrear() {
         ArrayList<ClienteModel> clientes = clienteDAO.leerCliente();
         ArrayList<Vehiculo> vehiculos = new ArrayList<>(motocicletaElectricaDAO.leerMotocicletas());
@@ -54,7 +58,8 @@ public class ControllerIntencionCompra implements ActionListener {
         }
         ventana.repaint();
     }
-
+    
+    //Creación del metodo agregarIntencionCompra
     public void agregarIntencionCompra() {
         String[] cliente = ventanaFormularioIntencionCompra.getComboBoxClientes().getSelectedItem().toString().split(": ");
         String[] vehiculo = ventanaFormularioIntencionCompra.getComboBoxVehiculos().getSelectedItem().toString().split(": ");
